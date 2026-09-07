@@ -4,6 +4,7 @@
 <ins> **ecampus (https://ecampus.konkuk.ac.kr)에서 사전 설문조사 진행중입니다~** </ins> 
 
 ---
+
 ## 오픈채팅방(암호: 20262)
 https://open.kakao.com/o/gktIULLi
 
@@ -14,4 +15,5 @@ https://yangguibee.github.io/
 
 ## 2026.2학기 강의교안
 https://github.com/YangGuiBee/AIG2
+
 ---
