@@ -1,4 +1,4 @@
-## 01 강. 강의 소개 및 AI 거버넌스 개론
-<img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/01/AIG2026-2c_01.JPG'>
+## 14 강. AI 거버넌스 실무사례
+<img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/14/AIG2026-2c_14.JPG'>
 
 
