@@ -1,0 +1,789 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2강 선행연구 14편 — 소논문 참조자료</title>
+<style>
+:root{--bg:#faf9f7;--ink:#1a1a2e;--sub:#5a5a72;--line:#e2e0dc;--ac:#2563a8;--box:#fff;--hl:#eef4fb}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Malgun Gothic','\B9D1\C740 \ACE0\B515',serif;background:var(--bg);color:var(--ink);line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+.hd{border-bottom:3px solid var(--ink);padding-bottom:16px;margin-bottom:8px}
+.hd h1{font-size:26px;letter-spacing:-.5px}
+.hd .s{color:var(--sub);font-size:14px;margin-top:6px}
+h3.sec{font-size:18px;margin:30px 0 12px;padding-left:10px;border-left:4px solid var(--ac)}
+.intro{background:var(--hl);border-left:4px solid var(--ac);padding:16px 18px;margin:18px 0;font-size:13.5px;border-radius:0 8px 8px 0}
+.intro b{color:var(--ac)}
+.ph1{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:13.5px;margin:6px 0 8px}
+.ph1 .miss{color:#a15c00;font-weight:600}
+table.toc{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+table.toc th,table.toc td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.toc th{background:#f0efec;color:var(--sub);font-weight:700}
+table.toc td.c{text-align:center;white-space:nowrap}
+table.toc a{color:var(--ac);text-decoration:none}
+.paper{background:var(--box);border:1px solid var(--line);border-radius:12px;padding:22px;margin:18px 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.ph{margin-bottom:8px}
+.pno{display:inline-block;color:#fff;font-weight:700;font-size:13px;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%}
+.pbadge{font-size:11px;color:var(--sub);margin-left:8px}
+.paper h2{font-size:17px;line-height:1.4;margin:4px 0}
+.summary{font-size:13.5px;color:#333;line-height:1.65;background:#f6f5f2;border-left:3px solid var(--ac);padding:10px 13px;border-radius:0 6px 6px 0;margin:8px 0 6px}
+.cit{font-size:13px;color:#444;padding:6px 0 12px;border-bottom:1px dashed var(--line);margin-bottom:10px}
+.rv br{content:"";display:block;margin-top:4px}
+.row{display:grid;grid-template-columns:150px 1fr;gap:10px;padding:7px 0;border-bottom:1px solid #f2f1ee}
+.rk{font-size:12.5px;font-weight:700;color:var(--ac)}
+.rv{font-size:13.5px;color:#2a2a3a}
+.src{font-size:11.5px;color:var(--sub);margin-top:10px;word-break:break-all}
+.src a{color:var(--ac)}
+.foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+@media(max-width:680px){.row{grid-template-columns:1fr}.rk{margin-bottom:2px}}
+  #inkCanvas{
+    position:fixed; inset:0; z-index:9000; pointer-events:none; touch-action:none;
+  }
+  #inkBar{
+    position:fixed; right:18px; bottom:18px; z-index:9100;
+    background:rgba(28,32,36,.94); color:#f2f2f2; border-radius:12px;
+    box-shadow:0 6px 28px rgba(0,0,0,.35); font-family:var(--sans);
+    font-size:12px; user-select:none; -webkit-user-select:none;
+    padding:8px; min-width:230px; backdrop-filter:blur(6px);
+  }
+  #inkBar.folded{display:none}
+  #inkHead{
+    display:flex; align-items:center; gap:8px; cursor:move; padding:2px 4px 8px;
+  }
+  #inkHead .ttl{font-weight:700; letter-spacing:.04em; flex:1; font-size:11.5px; opacity:.85}
+  #inkBody{display:flex; flex-direction:column; gap:7px}
+  .inkRow{display:flex; gap:5px; flex-wrap:wrap; align-items:center}
+  .inkRow.sep{border-top:1px solid rgba(255,255,255,.14); padding-top:7px}
+  #inkBar button{
+    background:rgba(255,255,255,.09); color:#eee; border:1px solid rgba(255,255,255,.14);
+    border-radius:7px; padding:6px 9px; font-size:11.5px; cursor:pointer; line-height:1.2;
+    font-family:inherit; white-space:nowrap;
+  }
+  #inkBar button:hover{background:rgba(255,255,255,.18)}
+  #inkBar button.on{background:#e8b13a; color:#1c2024; border-color:#e8b13a; font-weight:700}
+  #inkBar button.wide{flex:1; text-align:center}
+  #inkBar button.danger:hover{background:#8a3226; border-color:#8a3226}
+  .sw{
+    width:24px; height:24px; border-radius:50%; padding:0 !important; border:2px solid rgba(255,255,255,.25) !important;
+  }
+  .sw.on{border-color:#fff !important; box-shadow:0 0 0 2px #e8b13a}
+  #inkMode{font-weight:700}
+  #inkHint{font-size:10.5px; opacity:.6; line-height:1.5; padding:0 4px}
+  #inkToast{
+    position:fixed; left:50%; bottom:26px; transform:translateX(-50%);
+    background:rgba(28,32,36,.94); color:#fff; padding:10px 18px; border-radius:24px;
+    font-size:13px; z-index:9200; opacity:0; transition:opacity .25s; pointer-events:none;
+    font-family:var(--sans);
+  }
+  #inkToast.show{opacity:1}
+  #inkHelp{
+    position:fixed; inset:0; z-index:9300; background:rgba(0,0,0,.55);
+    display:none; align-items:center; justify-content:center; padding:24px;
+  }
+  #inkHelp.show{display:flex}
+  #inkHelp .panel{
+    background:#fff; color:#1a1a1a; max-width:560px; width:100%; border-radius:10px;
+    padding:26px 30px; font-size:13.5px; line-height:1.8; max-height:80vh; overflow:auto;
+  }
+  #inkHelp h4{margin:16px 0 6px; color:var(--accent); font-size:13.5px}
+  #inkHelp h4:first-child{margin-top:0}
+  #inkHelp kbd{
+    background:#eee; border:1px solid #ccc; border-bottom-width:2px; border-radius:4px;
+    padding:1px 6px; font-family:var(--mono); font-size:11.5px;
+  }
+  #inkHelp ul{padding-left:1.3em; margin:0}
+  body.ink-draw{user-select:none; -webkit-user-select:none}
+  body.ink-board #inkBar, body.ink-board #inkToast{display:none !important}
+  @media print{#inkCanvas,#inkBar,#inkToast,#inkHelp{display:none !important}}
+</style></head><body><div class="wrap">
+<div class="hd"><h1>2강 선행연구 14편 — 소논문 참조자료</h1>
+<div class="s">AI거버넌스 기반 연구방법론 · 기존 7편 + 추가 7편 · 2026-09-08</div></div>
+
+<div class="intro"><b>거버넌스 기반 연구방법론 2강</b>에서 다룬 국내 선행연구 <b>7편</b>과, 새로운 방법론을 기반으로 확장한 <b>7편</b>을 합쳐
+<b>총 14편</b>을 소논문 작성에 참조할 수 있도록 <b>①연구배경 ②연구이론 ③연구방법론 ④데이터 ⑤연구결과 ⑥특장점(시사점)</b> 형식으로 정리한 <b>논문 작성 참조용 자료</b>.</div>
+
+<h3 class="sec">(1) 선정 근거 — 검색 사이트 · 조건</h3>
+<div class="ph1"><b>기존 7편 (2026-03-05 수집):</b><br>
+· 검색 사이트: DBpia(dbpia.co.kr)<br>
+· AI 검색: AI 거버넌스 관련 연구 중 윤리에 대한 대표 연구<br>
+· 원문: github.com/YangGuiBee/AIG/tree/main/TextBook-02<br>
+· 구성: ①과정 연구(1) 어떻게 법이 되었는가 · ②규범 연구(2·3·4) 그 법과 윤리는 타당한가 · ③측정 연구(5·6·7) 지켜지는지 어떻게 확인하는가.</div>
+<div class="ph1"><b>추가 7편 (2026-09-08 수집):</b><br>
+· 검색 사이트: KCI(kci.go.kr) · DBpia(dbpia.co.kr) · SAGE Journals · Springer<br>
+· 검색 키워드: "인공지능 윤리", "신뢰(trust)", "책임(accountability)", "AI 거버넌스", "인공지능기본법", "AI ethics auditing", "LLM auditing"<br>
+· 발행연도: 2024~2026(인공지능기본법 시행 2026.1.22 전후 최신 우선)<br>
+· 선정 기준: 기존 7편이 편중된 '척도·측정' 외의 <b>새 방법론 축</b>(헌법·기본권 비교법 / 신뢰 개념 유형화 / 척도의 실증 적용 / 질적 감사연구 / LLM 기술감사 / 고영향 AI 위험판단 / 민사 손해배상) 보완.</div>
+
+<table class="toc"><tr><th class="c">No</th><th>제목</th><th>저자</th><th class="c">발행</th><th>출판기관</th><th class="c">구분</th></tr>
+<tr><td class="c">1</td><td><a href="#p1">인공지능 거버넌스와 정책형성과정 연구</a></td><td>김지원</td><td class="c">2024</td><td>서울대학교 대학원 학위논문</td><td class="c">기존</td></tr><tr><td class="c">2</td><td><a href="#p2">인공지능 윤리와 저작권의 규제체계 연구</a></td><td>신용우</td><td class="c">2024</td><td>국회입법조사처 정책연구</td><td class="c">기존</td></tr><tr><td class="c">3</td><td><a href="#p3">인공지능(AI)시대, 인공지능기본법과 윤리</a></td><td>김경동</td><td class="c">2025</td><td>한국법학회 「법학연구」</td><td class="c">기존</td></tr><tr><td class="c">4</td><td><a href="#p4">인공지능의 윤리와 법의 접점</a></td><td>원상철</td><td class="c">2024</td><td>한국법이론실무학회 「법이론실무연구」</td><td class="c">기존</td></tr><tr><td class="c">5</td><td><a href="#p5">인공지능기술 윤리성 인식 척도개발 연구</a></td><td>김도연·고영화</td><td class="c">2022</td><td>한국디지털정책학회 「디지털융복합연구」</td><td class="c">기존</td></tr><tr><td class="c">6</td><td><a href="#p6">AI 윤리원칙 분류 모형 및 윤리 측정지표(EMI-AI) 개발</a></td><td>소순주</td><td class="c">2023</td><td>성균관대학교 일반대학원 학위논문</td><td class="c">기존</td></tr><tr><td class="c">7</td><td><a href="#p7">AI 로봇의 위험성 유형별 측정지표 개발과 윤리원칙 관계성</a></td><td>송현경</td><td class="c">2024</td><td>성균관대학교 일반대학원 학위논문</td><td class="c">기존</td></tr><tr><td class="c">8</td><td><a href="#p8">인공지능기본법상 '고영향 인공지능'과 관련된 기본권 논의 — EU AI규제법과 비교를 겸하여</a></td><td>백수원</td><td class="c">2025</td><td>유럽헌법연구</td><td class="c">추가</td></tr><tr><td class="c">9</td><td><a href="#p9">인공지능 거버넌스에서 신뢰 개념에 대한 고찰 및 정책 유형화 연구</a></td><td>우지숙·김수지</td><td class="c">2024</td><td>경제규제와 법</td><td class="c">추가</td></tr><tr><td class="c">10</td><td><a href="#p10">대학생의 인공지능 윤리의식에 관한 실증연구</a></td><td>백현기</td><td class="c">2024</td><td>산업융합연구</td><td class="c">추가</td></tr><tr><td class="c">11</td><td><a href="#p11">The emergence of artificial intelligence ethics auditing (인공지능 윤리 감사의 부상)</a></td><td>Schiff, D. S., Kelley, S., &amp; Camacho Ibáñez, J.</td><td class="c">2024</td><td>Big Data &amp; Society</td><td class="c">추가</td></tr><tr><td class="c">12</td><td><a href="#p12">Auditing large language models: a three-layered approach (LLM 감사: 3계층 접근)</a></td><td>Mökander, J., Schuett, J., Kirk, H. R., &amp; Floridi, L.</td><td class="c">2024</td><td>AI and Ethics</td><td class="c">추가</td></tr><tr><td class="c">13</td><td><a href="#p13">직업규제 영역의 인공지능 기능대체와 고위험성 판단기준 — 직업의 자유 제한 법리에 기초한 기능적 등가성 기준의 제안</a></td><td>김민규</td><td class="c">2026</td><td>법조</td><td class="c">추가</td></tr><tr><td class="c">14</td><td><a href="#p14">인공지능 시대의 '손해'에 대한 관견(管見) — '정서적 의존' 등의 비재산적 손해를 중심으로</a></td><td>이수경</td><td class="c">2026</td><td>민사법의 이론과 실무</td><td class="c">추가</td></tr></table>
+
+<h3 class="sec">(2) 14편 상세 — 6항목 정리</h3>
+
+    <article class="paper" id="p1">
+      <div class="ph"><span class="pno" style="background:#5a5a72">1</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>인공지능 거버넌스와 정책형성과정 연구</h2>
+      <div class="summary">2016~2023년 과학기술정보통신부 중심 주요 정책과, 정책 형성과정에 참여한 정부·전문가·기업·시민단체의 관계를 정책네트워크 이론과 사회기술시스템(STS) 관점에서 분석.</div>
+      <div class="cit"><b>김지원</b> · 2024 · 서울대학교 대학원 학위논문</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">이 연구의 질문은 'AI 정책은 어떻게 만들어졌는가' — 법의 내용이 아니라 법이 형성된 '과정'을 보는 정책학적 접근(강의 지도상 '과정 연구'로 분류). AI의 급속한 확산으로 차별·편향·설명가능성 부족·프라이버시 침해 등 새로운 사회적 위험이 발생하고, 이를 해결할 정책·윤리 프레임워크의 필요성이 크게 증가. 정책이 '누구의 상호작용'으로 형성되었는지를 규명할 필요.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">정책네트워크(Policy Network) 이론 — 정책은 한 주체의 결정이 아니라 여러 행위자의 관계에서 나오므로 '누가 누구와 어떻게 연결되어 있는가'를 분석 + 사회기술시스템(STS) 관점 — 기술과 사회를 분리하지 않고 함께 형성되는 것(기술↔사회 상호작용)으로 봄.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">문헌분석 + 정책네트워크 분석(정성적). 2016~2023년 과기정통부 중심 주요 정책과, 정책형성 참여주체(정부·전문가·기업·시민단체)의 관계를 분석.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">2016~2023년 한국 AI 정책 문서(기술영향평가 2016 → AI 윤리헌장 2018 → AI 국가전략 2019 → 법·제도·규제 정비 로드맵 2020) 및 참여주체 관계 자료.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① AI 거버넌스 발전 3단계 — 2016~ 철학자 중심 윤리원칙 제시(강제력 없음) / 2018~ 공정성·편향 등 기술적 해결 중심 / 2020~ 사회정의·인권·지속가능성 중심 사회기술적 접근. 규범 형식도 로봇 윤리 선언→윤리 방향성→민간 윤리강령→EU AI Act 등 법제화로 전환.<br>② 정책초점이 '윤리 원칙 제시'→'제도적 규제·법제화'로 이동(4년 소요).<br>③ 2023년 AI 기본법 추진 과정에서 시민단체 영향력 크게 증가, '우선허용-사후규제' 원칙 갈등 발생. '우선허용-사후규제'(일단 허용하고 문제 생기면 규제)는 '입증 전에도 조치 가능'한 예방원칙과 정면 충돌 → 이 이론적 대립이 시민단체(반대)·산업계(찬성)의 실제 정치 갈등으로 표출.<br>④ 권력배분 정부▶기업▶전문가▶시민단체 순(기업=혁신·규제완화 선호 vs 시민단체=인권·프라이버시·사전규제 선호). 한국 정책형성=행위자 관계 변화에 크게 영향받는 네트워크 기반 구조.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">한국 AI 정책 형성을 행위자 관계(네트워크)로 규명. 저자 제시 3대 과제=<br>①윤리·규제·산업진흥 균형(노선 A·B·C 갈등의 학술적 표현 — 19건 법안이 하나로 합쳐진 뒤에도 남은 긴장을 지적)<br>②고위험 AI 사전 안전장치(예방원칙·등급별 규제)<br>③민간 자율평가 역량 강화(자율규제 한계 극복·인증체계 — 강의 후반부 측정지표 연구들이 이 과제에 대한 직접 응답).<br>※주목: 권력배분에서 기업이 전문가·시민단체보다 앞 → '규제 포획'(규제 대상 산업이 규제 설계에 영향력 행사) 가설과 일치(저자는 용어 미사용).<br>※네 주체 중 전문가는 대체로 중립 위치에서 근거(evidence) 제공.<br>【한계】권력 배분을 '순서'로만 제시(크기 미계량 — 정부가 기업보다 얼마나 더 큰지는 알 수 없음)·분석이 2023년에서 멈춤 → 둘 다 후속연구 자리.<br>【소논문 힌트】'2024~2026 한국 AI 정책의 4→5단계 전환 분석'(김지원 틀에 시기만 확장 — 오늘 시점은 기본법 시행 후 4단계에서 5단계 산업 실행으로 넘어가는 국면, 실무 현장 관찰이 곧 1차 자료) / '한국 AI 정책 형성의 규제 포획 검증'(같은 자료를 규제학 개념으로 재해석) — 순서를 크기로 바꾸려면 설문·사회연결망분석(SNA) 활용.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%281%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4_%EC%A0%95%EC%B1%85%ED%98%95%EC%84%B1%EA%B3%BC%EC%A0%95.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p2">
+      <div class="ph"><span class="pno" style="background:#5a5a72">2</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>인공지능 윤리와 저작권의 규제체계 연구</h2>
+      <div class="summary">AI 확산으로 공정성·투명성·책임성 요구가 증가하고 허위조작정보(딥페이크)·저작권 침해 등 현실적 문제가 발생. 생성형 AI 확산으로 학습데이터 저작권 면책 여부가 핵심 쟁점.</div>
+      <div class="cit"><b>신용우</b> · 2024 · 국회입법조사처 정책연구</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">AI 확산으로 공정성·투명성·책임성 요구 증가, 딥페이크(허위조작정보)·저작권 침해 등 현실 문제 발생. 생성형 AI 확산으로 학습데이터 저작권 면책 여부가 핵심 쟁점화.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">규제체계 비교론(수평적 vs 수직적 규제) · 입법론.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">비교법 분석 + 입법론(정성적). EU·미국·영국·싱가포르·일본·한국의 규제방식 및 TDM 면책 동향 비교.<br>【방법론 개념 TDM】Text and Data Mining(텍스트·데이터 마이닝)=대량의 텍스트·데이터를 기계적으로 분석하는 것으로 AI 학습이 바로 이것. 학습용 데이터 수집·저장 자체가 저작물 '복제'에 해당 → 침해 여부가 문제되는 것이 TDM 면책 논쟁의 핵심(입력 단계가 진짜 쟁점).<br>※선행연구의 분류(수평/수직)를 가져와 축을 추가하고 사례를 채우는 것도 연구의 한 형태 — 완전히 새 분류를 만들어야만 연구인 것은 아님(강의 13쪽 국가별 좌표표가 그 예).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">각국 AI 규제 법제·정책 — EU AI Act(위험기반·생태계 주체별 의무·범용AI 규제), 미국(행정명령·CA/CO 등 주 단위 규제), TDM 면책 국가별 동향(미국 공정이용·EU 학술/일반 이원화 옵트아웃·영국/싱가포르 광범위 면책·일본 EU유사·한국 2021 도입시도 폐기). TDM 근거 조항=EU Directive 2019/790 제3·4조(TDM 예외)·일본 저작권법 제30조의4·미국 저작권법 §107(공정이용)·한국 2021 저작권법 전부개정안 TDM 조항(폐기).</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① 규제유형: EU·캐나다=수평적(전 분야), 미국·영국·중국=수직적(분야별), 한국=양자 혼합 필요. EU AI Act 장점=전 분야 위험 사전규제/한계=복잡성·불명확성. 미국=연방 포괄규제 없이 행정명령+주 단위 강한 규제 확산(CA·CO).<br>② 저작권 4논점 중 3개는 대체로 정리(AI 자체 저작권 부여 곤란·도구 사용시 저작권 인정·생성물 침해는 기존 기준) / 미해결=AI 학습 과정의 저작권 면책(TDM 면책, 입력 단계가 진짜 쟁점).<br>③ TDM 국가별 스펙트럼: 영국·싱가포르=광범위 면책(옵트아웃 불허) / EU·일본=중간(EU는 학술·일반 이원화, 일반 TDM에 옵트아웃 허용) / 미국=공정이용 법리로 다루나 상업성·대체성 문제로 불확실 / 한국=2021년 도입 시도 후 이해관계자 반대로 폐기(여전히 열린 쟁점).<br>④ 딥페이크 표시의무는 허위정보 예방+저작권 보호에 동시 기여(외부성 내부화) — 생성물임이 표시되면 어떤 데이터로 만들어졌는지 추적 실마리가 생기고, 표시 비용을 생성자에게 부담시키면 딥페이크 피해자·저작권자 두 부류의 제3자 피해가 함께 감소. 단 기술적 회피 가능성 → 초기엔 적용범위·수범자를 좁게.<br>⑤ 저자 종합결론=규제는 유연해야 함 / 신뢰성 제고→사회적 수용성 향상 / 이해관계자 갈등 완화→산업 발달 / 국제 규제 정합성→글로벌 경쟁력. 최종 목표='규제와 혁신의 균형'(신뢰를 규제 비용이 아니라 시장 조건으로 봄).</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">이미 답이 있는 문제와 없는 문제를 분리 제시(좋은 선행연구 검토의 형태).<br>※본 강의 국가별 좌표표(수평/수직 분류)의 원전. 저자 입법제언 5가지=<br>①EU식 옴니버스 도입하되 강도 낮추기(한국법이 실제로 그렇게 됨)<br>②위험기반 규제를 공공분야 중심 점진 확대<br>③생성형·범용 AI 별도 규제(GPAI는 용도 미정이라 등급 포섭 불가)<br>④제공자·배포자 등 생태계 주체별 의무 구체화(3자 책임구조)<br>⑤독립적 국가 AI 감독기구(컨트롤타워). 한국 TDM 입법 설계과제 5개(면책 조항·옵트아웃 범위·출처표시·보상제·영리목적 면책+권리자 보호) —<br>③출처표시는 AI법의 투명성 의무(데이터 출처 공개)로 넘어옴=법 분야 간 상호작용.<br>【한계】제언이 방향 수준('강도를 낮추라'의 구체 수준 미제시)=정성연구 공통 한계→측정연구 필요성.<br>【소논문 힌트】'TDM 면책 도입 시 권리자 보상제 설계'·'학습데이터 출처표시 의무의 실행 가능성 검토'.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%282%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EC%9C%A4%EB%A6%AC_%EC%A0%80%EC%9E%91%EA%B6%8C%EA%B7%9C%EC%A0%9C%EC%B2%B4%EA%B3%84.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p3">
+      <div class="ph"><span class="pno" style="background:#5a5a72">3</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>인공지능(AI)시대, 인공지능기본법과 윤리</h2>
+      <div class="summary">인공지능시대·인공지능기본법·윤리를 연구주제로 설정하고, 문헌연구를 채용하여 설명적·규범적인 방식으로 진행했다. 법 시행 전에 쓰인 비판이 시행 후 어떻게 읽히는지가 관전 포인트다.</div>
+      <div class="cit"><b>김경동</b> · 2025 · 한국법학회 「법학연구」</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">인공지능시대·인공지능기본법·윤리를 주제로, 법의 문제점 도출과 대응방안 마련이 필요. 성격=비판적 연구(법 소개가 아니라 '무엇이 부족한가'를 짚음). 본 강의 국가별 좌표표에서 한국 행 쟁점 '고영향 AI 개념의 명확성'을 뒷받침하는 근거 논문.<br>※시점 대조=집필 2025.6(시행 전) / 법 시행 2026.1.22 / 강의 시점 2026.9(시행 후 약 7개월, 개정법 시행 후 약 1개월 반) → 그 사이 시행령·가이드라인·개정법으로 일부 지적이 보완됐을 수 있으니 선행연구는 반드시 집필시점과 현재를 대조할 것.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">규범적·설명적 접근(법철학·법정책).</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">문헌연구(설명적·규범적 방식).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">인공지능기본법 조문 및 관련 문헌.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">세 층위 아홉 문제 도출(법·기술·사회로 층위 구분한 것 자체가 분석틀) —<br>[1층 법 자체] ①인공지능 개념의 문제 ②고영향 AI 개념·범위의 문제 ③책임성 내용의 결핍·부재 /<br>[2층 알고리즘] ①편향성 ②가치판단·의사결정 왜곡 ③개인정보·저작권 /<br>[3층 위험성·규제] ①AI에 대한 심리적 불안 ②적절한 윤리의 부재 ③규제의 문제. 가장 널리 인용되는 지적=1층② 고영향 AI: 법 정의='생명·신체·기본권에 중대한 영향을 미칠 우려가 있는' AI인데 '우려'·'중대한 영향'이 모호(누가·어느 정도인지 불명 — 사업자 판단시 축소해석 유인, 감독기관 판단시 예측가능성 저하) → 유연성(예방원칙의 미덕, '우려'는 원래 예방원칙의 각인) vs 명확성(법적 결함)의 상충.<br>※2층③(개인정보·저작권)은 앞 신용우 연구와 중복 지적 → 여러 연구가 같은 문제를 짚으면 그 분야 핵심 쟁점의 신호(선행연구를 여러 편 읽는 이유). 1층③ 책임성: 제33·34조가 사업자 책무를 규정하나 사고 시 손해배상 귀속이 불명확. 3층① 심리적 불안: 기술적 안전≠사회적 신뢰(실제 안전해도 불안한 상태·사슬 6단계 '사회의 확신'의 반대편) → 측정해야 확인 가능(후반부 김도연·고영화 2022 사용자 인식 측정 연구의 근거). 대응 3처방=①기본법 수정·보완(개념·조문 명확화 또는 아예 새 개념정의·조문 재구성 — 후자가 더 강한 주장) ②AI의 도구적 본질 인식(인간 중심성) ③설계자·소유자 통제 강화+생성·유통은 자율/느슨한 규제(규제 대상을 '모델→입력'에서 한 걸음 더 나아가 '사람=주체'를 규율, 등급별 차등).</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">법 시행 전 비판적 검토로 개정 방향 제시. 알고리즘 자체 강한 규제보다 '설계자·소유자 통제'로 초점 이동 제안(입력·주체 규율).<br>※본 강의 한국 행 '고영향 AI 개념 명확성' 쟁점의 근거.<br>【한계】아홉 문제를 목록으로 제시했으나 심각도 우선순위 없음(무엇부터 고칠지 미판단) → 델파이 조사로 우선순위 도출 가능.<br>【시점 확인 습관 】집필=2025.6(시행 전), 현재=시행 후 → 시행령·가이드라인·개정법으로 일부 문제가 보완됐을 수 있으니 선행연구는 반드시 집필시점과 현재를 대조할 것(2025 비판을 그대로 인용하면 부정확).<br>【소논문 힌트】'AI 기본법 시행 이후 고영향 AI 개념 명확화 진전 평가 — 김경동(2025) 지적사항 후속 검토'(시행령·가이드라인을 자료로).</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%283%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%28AI%29%EC%8B%9C%EB%8C%80_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EA%B8%B0%EB%B3%B8%EB%B2%95%EA%B3%BC%EC%9C%A4%EB%A6%AC.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p4">
+      <div class="ph"><span class="pno" style="background:#5a5a72">4</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>인공지능의 윤리와 법의 접점</h2>
+      <div class="summary">AI가 인간사회에 미치는 윤리적·법적 영향 전반을 체계적으로 정리하고 주요 쟁점을 분석. 사슬 1단계(윤리 원칙)에 놓인 유일한 철학적 연구다.</div>
+      <div class="cit"><b>원상철</b> · 2024 · 한국법이론실무학회 「법이론실무연구」</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">AI가 인간사회에 미치는 윤리적·법적 영향 전반을 체계적으로 정리하고 주요 쟁점 분석 필요. 선행연구 지도에서 사슬 1단계(윤리 원칙)에 놓인 유일한 철학적 연구(앞선 법·정책 연구 3편과 성격이 다름), 84개 윤리지침 5대 수렴 원칙을 국내에 처음 소개한 원전. 논의가 뒤섞이는 것을 막기 위해 시간지평 구분이 필요('AI가 인류를 위협한다'=장기 vs '채용 AI가 차별한다'=단기는 다른 층위).<br>※현재 법(EU AI Act·한국 기본법)은 거의 전부 단기 문제 대응 장치이며 중기(AI 법적지위)·장기 문제는 법에 없음 — 이를 아는 것이 곧 법의 한계를 아는 것.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">AI 윤리 이론(기계윤리·도덕적 지위·특이점·가치정렬) + 시간지평 구분 — 단기(현재~2030: 프라이버시·편향·자율주행·군사AI) / 중기(2030~2050: AI 거버넌스·법적지위·인간-기계 상호작용) / 장기(2050~: 특이점·대량실업·인간 정체성).</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">① 철학적 문헌 검토와 기존 AI 윤리 이론(기계윤리·도덕적 지위·특이점·가치정렬) 분석<br>② 자율주행·자율무기·기계편향·블랙박스 등 실제 사례 기반 논쟁 검토<br>③ Jobin et al. 84개 지침 비교 결과 활용(정성적·2차 연구).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">윤리·철학·기술 핵심 문헌, 국제 지침(EU HLEG·산업계 윤리지침), 주요 사례(테슬라 오토파일럿 사고 2016, Uber 자율주행 보행자 사망 2018).</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">6대 윤리쟁점 구조화 —<br>①기계윤리(윤리를 AI에 넣는 법: 하향식=규칙 프로그래밍/상향식=데이터 학습/혼합형, 세 방식 모두 한계)<br>②자율시스템 책임 문제=책임격차(responsibility gap): 자율 시스템이 스스로 판단해 결과를 냈을 때 책임자가 특정되지 않는 빈자리(개발자는 예측 못함·이용자는 개입 안 함·AI는 법적 주체 아님) → 법이 책임을 인위적으로 배분하는 철학적 근거<br>③기계편향(데이터·알고리즘·결과 3층 편향 — 데이터 고쳐도 알고리즘·결과에서 편향 발생 가능)<br>④불투명성(블랙박스): 대안=반사실적 설명(counterfactual, '연소득 500만원 더 높았다면 승인' 식으로 설명 요구권 구현)<br>⑤기계 의식·도덕적 지위(자율성/간접의무=동물학대 금지 논리/관계적 접근 비교)<br>⑥특이점·가치정렬(value alignment). 84개 지침 중 공통 5원칙(투명성·정의/공정성·비악의성·책임·프라이버시)이 강하게 수렴, 선행·자율성·신뢰·존엄·연대는 문서 간 편차 큼.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">철학·법 논쟁 전면 통합, 수렴+이질성 함께 제시(합의만이 아니라 갈린 것도 씀=학술적 균형), 미래지향 이슈 포괄, 실제 사례(테슬라·Uber)로 구체화. 시간지평 3구분(단기 현재~2030: 프라이버시·편향·자율주행·군사AI / 중기 2030~2050: 거버넌스·법적지위·인간-기계 상호작용 / 장기 2050~: 특이점·대량실업·정체성)은 논의가 뒤섞이는 것을 막는 실용적 틀 — 현재의 법(EU AI Act·한국 기본법)은 거의 전부 단기 문제 대응 장치. 측정지표는 안 만들었으나 '기초 틀'을 남겨 측정 3편(김도연·고영화 2022·소순주 2023·송현경 2024)이 실제 지표 개발·통계 검증으로 이어받음(사슬 1단계→5·6단계 전환점).<br>【저자가 밝힌 한계】<br>①정량 검증 부족<br>②정책 제안 비구체적<br>③비서구 관점 분석 제한<br>④2차 연구 의존(Jobin을 직접 코딩한 것 아님).<br>※네 한계는 저자 스스로 밝힌 것 — 자기 한계를 명시하는 것은 학술적 정직성으로 평가받는 미덕(소논문의 '연구의 한계' 절은 감점이 아니라 가점 요소).<br>【인용 원칙】5대 수렴 원칙 인용 시 Jobin et al. 원문을 직접 인용할 것 — 원상철(2024)을 통한 재인용은 이중 인용(secondary citation)이 되어 신뢰도 저하(1차·2차 자료 구분은 학술 글쓰기 기본).<br>【소논문 힌트】'한국·아시아 관점의 AI 윤리원칙 비교'=저자가 직접 명시한 공백(84개 지침 대부분이 서구 산출물, 자율성·존엄·연대는 문화적 전제가 강함) → '원상철(2024)이 한계로 지적한 비서구 관점을 본 연구가 다룬다'는 식으로 기여 논증이 용이.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%284%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EC%9C%A4%EB%A6%AC_%EB%B2%95%EC%9D%98%EC%A0%91%EC%A0%90.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p5">
+      <div class="ph"><span class="pno" style="background:#5a5a72">5</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>인공지능기술 윤리성 인식 척도개발 연구</h2>
+      <div class="summary">AI 기술확산 초기단계에서 사용자 관점의 윤리성 인식(Ethical Awareness)을 계량화한 첫 체계적 시도. 문헌 분석으로 핵심요소를 추출하고 개방형 설문(133명) → 예비조사(273명) → 본조사(500명)로 문항을 개발해 4개 요인 16개 문항의 척도를 완성했다.</div>
+      <div class="cit"><b>김도연·고영화</b> · 2022 · 한국디지털정책학회 「디지털융복합연구」</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">AI 기술확산 초기, 사용자 관점의 윤리성 인식(Ethical Awareness)을 계량화한 도구 부재. 실제 윤리문제는 사용자 인식 부족으로 방치되는 경우가 많아 '윤리인식→사용행동→위험가능성' 구조 모니터링 필요. (공급 측=정부·기업이 아닌 수요 측=사용자를 보는 유일 연구)</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">사용자 관점 AI 윤리성 인식 4요인 구성개념 —<br>①투명성(설명가능성·공개성)<br>②공정성(성·연령·인종 차별 방지)<br>③안전성(개인정보·유해콘텐츠·보안)<br>④책임성(법적·기술적·도덕적 책임).</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">척도개발 방법론(3단계) — 1단계 개방형 설문(133명)으로 인식·이슈 파악 → 2단계 탐색적 요인분석(EFA)로 45→26문항 정제(예비조사 273명) → 3단계 확인적 요인분석(CFA)로 최종 16문항 확정(본조사 500명).<br>【방법론 개념 EFA·CFA】EFA(탐색적 요인분석)=요인 수를 모를 때 문항들이 몇 개 묶음으로 뭉치는지 찾아내는 방법 / CFA(확인적 요인분석)=가정한 요인 구조가 데이터에 맞는지 검증(구조를 세운 뒤 사용). 순서에 논리=탐색(EFA) 후 확인(CFA). 같은 표본으로 EFA·CFA를 함께 하면 안 됨(자기가 찾은 구조를 자기 데이터로 검증하면 당연히 맞음='자기가 그린 답을 자기가 채점') → 표본 분리: 예비조사 273명 EFA·본조사 500명 CFA. Cronbach's α=같은 요인 문항이 일관되게 재는지 보는 내적 일관성 계수(통상 0.7 이상 수용, 본 연구 .79~.86 양호).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">개방형 133명 + 예비조사 273명 + 본조사 500명 설문 응답.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">4요인 16문항 척도 완성 — 투명성 6문항·공정성 3·안전성 2·책임성 5, Likert 5점, Cronbach's α=.79~.86. 관찰: Jobin 5원칙(투명성·공정성·비악의성·책임·프라이버시) 중 비악의성+프라이버시가 실증에선 '안전성' 하나로 묶임(이론적 분류≠실증적 분류, 요인분석 결과 응답자가 비슷하게 인식). 문항 성질도 다름 — 투명성·공정성은 '~되어야 한다'(요구 수준)이나 안전성은 '~될 수 있다'(위험 인지 수준). 책임성=법적 책임·기술적 책임(accountability)·도덕적 책임 3층. OECD AI 원칙·EU AI Act 고위험 요구사항·ISO/IEC 42001 정합.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">사용자(수요 측) 윤리성 인식을 계량화한 첫 체계적 시도 — 앞 4편은 모두 공급 측(정부·기업)을 봤으나 이 연구만 수요 측(사용자)을 봄(19쪽 사슬 6단계 '사회의 확신'을 직접 측정하는 유일 연구). 논리='윤리인식→사용행동→위험가능성' — 시스템이 잘 만들어져도 사용자가 위험을 인식 못하면 부주의하게 쓰고 문제도 방치됨. 결론만이 아니라 재사용 가능한 16문항 '척도(도구)'를 남김 — 주장보다 도구가 오래 쓰임(측정연구의 특별한 가치). 실무: ISO/IEC 42001 '인식 교육' 심사에서 사내 AI 윤리 인식 수준을 이 16문항으로 측정·문서화하면 준수 증거가 됨(성과 기반 규제=과정의 문서화가 곧 준수 증거).<br>【소논문 힌트】이 척도를 실제 학습자·직원 집단에 적용하는 실증연구(주장보다 도구 활용) — 이 척도는 생성형 AI 확산·법 시행 이전인 2022년 개발이라 인식 구조가 바뀌었을 가능성. 같은 16문항으로 재설문하고 CFA로 요인 구조 유지 여부 확인, 구조가 달라졌다면 그 자체가 '생성형 AI 확산 이후 윤리성 인식 구조 변화'라는 발견(문항 신규 제작 불필요·비교 기준 이미 존재로 소논문 규모 실행 가능).</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%285%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EA%B8%B0%EC%88%A0_%EC%9C%A4%EB%A6%AC%EC%84%B1%EC%9D%B8%EC%8B%9D%EC%B2%99%EB%8F%84%EA%B0%9C%EB%B0%9C.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p6">
+      <div class="ph"><span class="pno" style="background:#5a5a72">6</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>AI 윤리원칙 분류 모형 및 윤리 측정지표(EMI-AI) 개발</h2>
+      <div class="summary">국내외 윤리 가이드라인·법·표준이 제정되었지만 체계적이고 측정 가능한 윤리 지표가 부족했다. 신뢰할 수 있는 AI 실현을 위해 윤리원칙 기반 측정지표의 개발과 검증 체계가 필요하다는 문제의식에서 출발한다.</div>
+      <div class="cit"><b>소순주</b> · 2023 · 성균관대학교 일반대학원 학위논문</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">국내외 윤리 가이드라인·법·표준이 제정되었으나 체계적이고 측정 가능한 윤리지표가 부족. 신뢰할 수 있는 AI 실현을 위해 윤리원칙 기반 측정지표의 개발·검증 체계가 필요.<br>※앞 연구(김도연·고영화 2022)와의 차별점=김도연·고영화는 '사용자의 인식'(일반 사용자, 16문항)을 재고, 소순주(EMI-AI)는 'AI 제품·서비스 자체'(시스템, 86지표)를 잼 — 사람을 재는 연구 vs 시스템을 재는 연구.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">AI 윤리원칙 분류모형 — 원칙 → 구성요소 → 세부지표의 3층 구조(5원칙 → 20요소 → 86지표). 신뢰 6대 구성요소를 실제 지표로 분해. 5원칙별 구성요소·세부지표 예시: 투명성(설명가능·추적가능·검증가능·식별가능; 예 로그 기록·데이터 근원 추적) / 책무성(Accountability, '책임성'과 번역 차이; '이용자 책임성' 구성요소 포함=기업만이 아닌 3자 책임구조) / 공정성(구성요소 공공성·접근성, 세부지표 취약계층 고려) / 통제성(예 비상정지 기능) / 안전성(구성요소에 가치 정렬 value alignment; 세부지표는 '의도된 목적 부합'으로 구체화=초지능 문제가 아니라 설계 목적대로 작동하는가). ALTAI(Assessment List for Trustworthy AI)=EU 고위급전문가그룹(HLEG)이 만든 신뢰 AI 자체평가 체크리스트로, EMI-AI가 국제 정합성 비교 기준으로 삼은 대상.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">다섯 단계 —<br>①문헌분석(국내외 가이드라인·헌장·정책·국제표준 IEEE·EU·ISO)<br>②전문가조사(FGI 3회 총 30명·Delphi 2회 설문)<br>③지표개발(선행 40개+FGI 55개→델파이 50개 확정→통합 90개 후보)<br>④신뢰성검증(164명 설문, SPSS로 타당도·신뢰도·상관·요인분석)<br>⑤EU ALTAI(69개) 매핑.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">국내외 가이드라인·표준 문헌, 전문가 30명(FGI·델파이), 검증 설문 164명, ALTAI 69개 항목.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">지표 개수 흐름 40→55→50→90→86(선행 40개+FGI 55개→델파이 50개 확정→통합 90개 후보→164명 검증→86개 최종). 3층 구조 5원칙→20구성요소→86지표(각 층 약 4배씩; 원칙은 추상적이라 바로 측정 불가·지표는 너무 많아 관리 불가 → 중간 구성요소 층). 5원칙=투명성·책무성·공정성·통제성·안전성 — 21쪽 신뢰 6요소와 대응하되 '인간 중심성'(가치)이 '통제성(Controllability)'(기능)으로 재구성됨('인간이 중심인가'는 측정 불가지만 '비상정지 기능이 있는가'는 측정 가능 — 측정과정에서 개념이 재구성). 통계: KMO=0.914, Bartlett 유의확률 0.000, Cronbach α≥0.8, 상관 0.4~0.9. ALTAI(EU 69개) 비교=공통 61개(국제 정합)·EMI-AI 독자 18개(국내 추가 필요, 접근성·공공성 등)·ALTAI 독자 8개(국내가 놓침).</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">최초 한국형 AI 윤리 측정지표(EMI-AI) 체계화, 국내+국제(ALTAI) 통합, 164명 통계 기반 객관성.<br>※연구 설계 자체가 '브뤼셀 효과'의 사례 — 국내 지표를 만들면서 EU 기준(ALTAI)과 호환되게 설계한 것은, 기업·입법 층위를 넘어 학술 연구 설계 층위에까지 EU 기준이 작용함을 보여줌. 활용처 4개(제품 평가·인증/검사 항목·가이드라인·교육/정책) — 특히 인증체계의 검사 항목 후보(학술연구가 제도 설계 재료가 됨). 실무: EU 진출 기업은 ALTAI 독자 8개를 별도 점검해야 함(국내 기준만 충족하면 그 8개가 빠짐) — 1강 시나리오 B의 구체적 준비 목록.<br>【저자가 밝힌 한계】<br>①한국 중심 맥락→국제 일반화 추가검증(독자 18개가 강점이자 이 한계의 원인)<br>②FGI·델파이 정성 의존→전문가 구성 편향 가능<br>③지속 업데이트 필요<br>④실제 산업 파일럿 테스트 부재.<br>【소논문 힌트 】86개 지표를 실제 서비스 1개에 적용해 '판정 불가·중복·산업 부적합' 항목을 보고하면 파일럿 테스트 연구가 됨 — 새 지표·대규모 설문 불필요, 저자가 '못 했다'고 명시한 부분이라 기여 논증 쉬움(실무자에게 특히 권장).</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%286%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EC%9C%A4%EB%A6%AC%EC%9B%90%EC%B9%99%EB%B6%84%EB%A5%98%EB%AA%A8%ED%98%95_%EC%9C%A4%EB%A6%AC%EC%B8%A1%EC%A0%95%EC%A7%80%ED%91%9C%EA%B0%9C%EB%B0%9C%EC%8B%A0%EB%A2%B0%EC%84%B1.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p7">
+      <div class="ph"><span class="pno" style="background:#5a5a72">7</span>
+        <span class="pbadge">기존 7편</span></div>
+      <h2>AI 로봇의 위험성 유형별 측정지표 개발과 윤리원칙 관계성</h2>
+      <div class="summary">기존 연구는 법적·윤리적 논의 중심이며, 실제 로봇이 유발하는 구체적 위험성 측정지표가 부재했다. 국가·기업 가이드라인은 있으나 범용적·통합적 위험성 점검 지표가 없다는 문제의식이다.</div>
+      <div class="cit"><b>송현경</b> · 2024 · 성균관대학교 일반대학원 학위논문</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">기존 연구는 법적·윤리적 논의 중심이며 실제 로봇이 유발하는 구체적 위험성 측정지표가 부재. 국가·기업 가이드라인은 있으나 범용적·통합적 위험성 점검 지표가 없음.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">위험성 4대 유형(①신체 물리적 ②인간 권리 ③재산 손실 ④사회적) 분류 + 5대 윤리원칙(투명성·책무성·공정성·통제성·안전성)과의 관계성.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">5단계 —<br>①문헌분석(2013~2023 국내외 AI·로봇 사고·위험 사례 76건)<br>②전문가 인터뷰(개발자·보안·로봇·윤리 학자 등 30명)<br>③Delphi(1·2차 각 30명, CVR로 타당도 검증)<br>④현장성 설문(활용 예상분야 종사자 328명 실증)<br>⑤통계분석(EFA·Cronbach α·상관·다중회귀).<br>【방법론 개념  델파이(Delphi)】전문가 집단의 의견을 체계적으로 모아 합의(consensus)를 도출하는 정성·정량 혼합법. 핵심 3장치=익명성·반복조사·피드백 제공(한자리 토론 시 목소리 큰 사람·지위 높은 사람이 지배 → 익명이면 의견 '내용'만으로 판단).<br>[단계1] 전문가 패널 선정 — 5~20명이 일반적(Okoli &amp; Pawlowski 2004: 전형 10~18명, 5명 규모도 사용), 다양한 배경 권장(한 분야만 모으면 편향 → 송현경은 개발자·보안·로봇·윤리 혼합).<br>[단계2] 1차 설문 설계·배포 — '이 문항이 타당한가·중요도는 어느 정도인가'(CVR·CVI 분석과 결합 가능).<br>[단계3] 응답 분석·피드백 — 평균·중앙값·범위·빈도 요약과 주요 의견을 익명으로 전문가에게 되돌려 줌(델파이의 특별한 단계).<br>[단계4] 2차 이상 라운드 — 타인 의견을 보고 자기 의견 재평가, 합의 부족 시 3~4라운드 반복.<br>[단계5] 합의 도출 기준 4개(함께 봐야 오판 방지)=<br>①IQR≤1.0(사분위범위 Q3−Q1; 1.0~1.5는 추가 라운드·1.5 초과는 합의 부족)<br>②합의율(4~5점)≥70~80%<br>③중앙값≥4(5점 척도)<br>④라운드 진행될수록 표준편차 감소.<br>【방법론 개념  CVR·CVI vs Cronbach α】CVR(내용타당도비율, Lawshe 1975)=개별 문항이 개념을 제대로 반영하는가('올바른 것을 재는가'), 범위 −1~+1(1에 가까울수록 타당·0이면 절반만 '필요'·음수면 빼야 함), 전문가 판단을 수치화해 재현 가능하게 만드는 것이 핵심. CVI=전체 도구의 내용타당도(4점 척도 중 3·4점만 '타당'으로 간주, 기준 엄격). Cronbach α(내적일관성, Cronbach 1951)=여러 문항이 한 개념을 얼마나 '일관되게 재는가'. α 4성질=<br>①유사 문항은 상관 높음<br>②문항 수 늘면 α 상승 → α&gt;0.95면 문항 중복 의심(통상 0.7~0.9 적정)<br>③단일 차원성 가정(요인별로 α 따로 계산)<br>④문항 삭제 시 α 변화 검토. 타당도≠신뢰도(체중계가 항상 3kg 더=신뢰도↑·타당도↓ / 무작위로 흔들림=신뢰도↓) → 둘 다 필요해 CVR과 α를 함께 봄.<br>※델파이는 패널 구성이 결과를 좌우(산업계 다수=규제완화·시민사회 다수=규제강화로 기움, 9쪽 규제 포획과 동형) → 읽을 때 패널 구성 확인, 쓸 때 선정 기준·구성 명시(그것이 투명성).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">문헌사례 76건, 전문가 30명(1·2차 델파이) + 윤리원칙 관계성 분석 전문가 14명, 현장설문 328명.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">위험성 4대 유형(분류 기준=무엇이 침해되는가) —<br>①신체 물리적(운행·작동 이상·인간 해칠 판단)<br>②인간 권리(인격권 침해·자유의사 방해·선택적 서비스)<br>③재산 손실(정보 탈취·기계 결함·잘못된 의사결정)<br>④사회적(데이터 문제·법규 판단 오류·작동 중지=제3자 피해=외부성). 11개 하위항목·52개 세부지표(센서오류·통신장애·프로그램오류·차별적 정보제공·악성코드·비인가접근·창작물 무단복제·데이터 유출 등 — 관찰 가능성 높아 그대로 위험 점검 체크리스트로 활용). CVR 기준 충족, Cronbach α=0.888~0.949(0.9 넘되 0.95 미만=중복 우려 없는 양호 범위), 회귀모형 모두 유의. 위험지표를 5대 윤리원칙(투명성·책무성·공정성·통제성·안전성)과 공식 매핑 — 소순주(2023) EMI-AI 5원칙과 완전히 동일(두 연구자가 독립적으로 같은 5축 도달=국내 AI 윤리측정에서 5축이 사실상 표준화되는 신호, Jobin 국제 수렴과도 겹침).</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">기술+윤리 통합형 위험성 측정지표 최초 개발(기존 연구는 윤리 또는 기술 한쪽에 편중 — 이 연구가 둘을 이음). 오늘 7편 중 방법론적으로 가장 무거움(사례 76건·전문가 30명·델파이 1·2차·현장설문 328명·다중회귀).<br>※사고 사례 76건을 연구자가 직접 수집=공적 AI 사고 DB 부재의 방증(있었다면 수집 시간을 분석에 썼을 것).<br>【저자가 밝힌 한계】<br>①미래위험 불확실·전문가 합의 곤란<br>②로봇 상용화 초기라 사고데이터 부족(76건도 통계적으로 충분치 않음)<br>③지속 개정 필요<br>④산업별 세부상황<br>⑤국가·문화적 차이.<br>【공통 공백】측정 3편이 모두 시점 경과·현장 적용 검증 없음·문화 맥락 부족을 공유 → 실무자의 현장 적용 연구가 최적 기회.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG/main/TextBook-02/%287%29_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EB%A1%9C%EB%B4%87_%EC%9C%84%ED%97%98%EC%84%B1%EC%9C%A0%ED%98%95%EB%B3%84%EC%B8%A1%EC%A0%95%EC%A7%80%ED%91%9C%EA%B0%9C%EB%B0%9C_%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EC%9C%A4%EB%A6%AC%EC%9B%90%EC%B9%99%EA%B4%80%EA%B3%84%EC%84%B1.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG/tree/main/TextBook-02) ▸</a></div>
+    </article>
+    <article class="paper" id="p8">
+      <div class="ph"><span class="pno" style="background:#2563a8">8</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>인공지능기본법상 '고영향 인공지능'과 관련된 기본권 논의 — EU AI규제법과 비교를 겸하여</h2>
+      <div class="summary">인공지능기본법이 도입한 '고영향 인공지능' 개념과 관련된 기본권 문제를, EU AI규제법과 비교하며 헌법적 관점에서 분석. '위험' 대신 '영향' 개념을 택한 한국법이 기본권을 실효적으로 보호하는지 검토한다.</div>
+      <div class="cit"><b>백수원(용인대)</b> · 2025 · 유럽헌법연구 통권 48호, 189–228쪽 · DOI 10.21592/eucj.2025.48.189</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">생성형 AI 등 기술의 급격한 발전으로 AI의 결정·판단이 인간의 삶에 직접 영향을 미치는 고위험 분야(채용·대출·의료·교통·공공행정)로 빠르게 확산 → 기술 중립성을 전제한 기존 법제의 한계가 명확히 드러남. 고영향 AI가 개인정보자기결정권·평등권·직업선택의 자유·적법절차 원칙 등 헌법상 핵심 권리를 위협하나 입법적 대비가 불충분하면 규제 공백에서 예기치 못한 권리침해 우려.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">헌법·기본권 이론(비교헌법). 목차: Ⅰ서론 Ⅱ EU AI규제법의 의의·주요내용 Ⅲ 국내 인공지능기본법의 법적 의미·과제 Ⅳ 고영향 AI 관련 헌법적 논의 Ⅴ결론.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">비교법적 분석(EU AI Act ↔ 한국 인공지능기본법)을 통해 헌법적 관점에서 고영향 AI의 개념·법적 구조를 검토.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">EU AI Act(위험도 4분류: 전면금지·고위험·제한적 위험·최소 위험 및 차등 규제·처벌), 한국 인공지능기본법 조문(고영향 AI 정의·영향평가) 및 관련 헌법 논의.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① EU는 '위험(risk)' 기반으로 4단계 분류·차등 규제·처벌하여 기본권 침해 가능성에 대응. 한국은 '위험' 대신 '영향' 개념을 도입해 규제 수위를 낮추고 영향평가·자율적 책임 강화에 초점(산업 진흥 중심 정책 방향).<br>② 한국의 영향평가 방식은 실질적 통제 수단이 되기에 한계 — 기본권 침해에 대한 예방적 대응·사후적 구제 수단이 미흡.<br>③ 고영향 AI의 의사결정 구조는 인간 개입 여지를 약화시키고 알고리즘 편향·설명 불가능성·책임소재 불명확성을 동반 → 기존 헌법질서에 적합한 새 규율체계 필요.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">고영향 AI 규제는 단순 기술 통제를 넘어 헌법적 정당성·국민 기본권 보호를 최우선에 두어야 한다는 헌법적 재조명(기존 7편에 없던 기본권 축). 저자 제언:<br>① 고영향 AI의 정의·규제 대상 범위를 명확히 설정<br>② 영향평가 제도의 실효성 확보<br>③ 설명가능성·이의제기 절차를 보장하는 법적 장치 마련<br>④ 인간 중심 AI 원칙·데이터 편향 방지·개인정보 최소수집·사회적 재교육 및 안전망으로 기술 진보와 권리 보호의 균형 실현.<br>【소논문 힌트】김경동<br>③의 '고영향 AI 개념 모호성' 지적을 헌법·기본권 관점에서 심화하는 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2808%29%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EA%B8%B0%EB%B3%B8%EB%B2%95%EC%83%81%20%EA%B3%A0%EC%98%81%ED%96%A5%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EA%B3%BC%20%EA%B4%80%EB%A0%A8%EB%90%9C%20%EA%B8%B0%EB%B3%B8%EA%B6%8C%20%EB%85%BC%EC%9D%98.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p9">
+      <div class="ph"><span class="pno" style="background:#2563a8">9</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>인공지능 거버넌스에서 신뢰 개념에 대한 고찰 및 정책 유형화 연구</h2>
+      <div class="summary">AI 거버넌스에서 '신뢰' 개념을 이론적으로 정초하고, 위험축소형↔신뢰성향상형 × 신뢰대상(기술↔기업)의 2축으로 정책을 네 유형(강화·준수·설명·참여)으로 유형화했다.</div>
+      <div class="cit"><b>우지숙·김수지(서울대 행정대학원)</b> · 2024 · 경제규제와 법 17권 2호(통권 34호), 30–50쪽 · DOI 10.22732/CeLPU.2024.17.2.30</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">AI 확산으로 신뢰를 촉진하려는 정책적 노력이 구체화되나,<br>① AI 신뢰가 무엇을 의미하는지<br>② 신뢰와 위험(risk)의 관계는 무엇인지<br>③ 신뢰가 어떤 과정을 거쳐 형성되는지<br>④ 이를 촉진하기 위해 정책은 어떤 역할을 해야 하는지가 여전히 불분명. 목차: Ⅰ들어가며 Ⅱ AI 신뢰의 개념적 틀 Ⅲ AI 신뢰 정책의 유형화 Ⅳ결론·정책적 함의.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">신뢰(trust) 개념론 — 접근방법 축(위험 축소형↔신뢰성 향상형) × 신뢰 대상 축(기술↔기업)의 2축 교차.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">이론적·개념적 검토를 통한 정책 유형화(실증분석 아님).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">AI 신뢰 관련 국내외 이론·정책 문헌.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① 신뢰=위험이 존재하지 않는 상태가 아니라 '위험의 존재에도 불구하고 그로 인해 취약해지는 것을 감수하려는 태도와 의지'. 신뢰성에 대한 이용자 평가가 큰 영향을 미치나 신뢰성이 곧바로 신뢰로 연결되는 것은 아님(신뢰 형성은 복잡·능동적 과정).<br>② 정책 4유형: [위험 축소 접근] 강화(enhanced)=AI 위험 수준을 낮추는 기술적 조치 / 준수(complying)=기업 개발과정의 위험 요소 제거. [신뢰성 향상 접근] 설명(explanatory)=AI 신뢰성 정보를 이용자에게 제공 / 참여(participatory)=이용자가 기업 신뢰성을 평가하고 신뢰성에 영향을 미치는 의사결정 과정에 참여하는 환경 조성.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">'신뢰=How(강제력 있는 보증장치)'의 개념적 뼈대 제공, 측정 3편과 규범 논의를 잇는 다리. AI 신뢰 정책이 위험 축소 노력뿐 아니라 이용자가 기술·기업의 신뢰성을 적극 평가하고 의사결정에 참여하는 환경 조성에 초점을 둘 필요가 있음을 시사.<br>【소논문 힌트】이 4유형 틀로 실제 국내 AI 신뢰 정책·가이드라인을 분류·평가하는 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2809%29%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%EC%97%90%EC%84%9C%20%EC%8B%A0%EB%A2%B0%20%EA%B0%9C%EB%85%90%EC%97%90%20%EB%8C%80%ED%95%9C%20%EA%B3%A0%EC%B0%B0%20%EB%B0%8F%20%EC%A0%95%EC%B1%85%20%EC%9C%A0%ED%98%95%ED%99%94%20%EC%97%B0%EA%B5%AC.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p10">
+      <div class="ph"><span class="pno" style="background:#2563a8">10</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>대학생의 인공지능 윤리의식에 관한 실증연구</h2>
+      <div class="summary">AI 윤리의식·기술이해·창의적 문제해결력이 대학생 학습성과에 미치는 영향을 설문 기반으로 실증 분석하여, 윤리의식이 기술이해에 긍정적 영향을 주고 기술이해가 문제해결력을 매개함을 밝혔다.</div>
+      <div class="cit"><b>백현기(원광대)</b> · 2024 · 산업융합연구 22권 12호, 23–36쪽 · DOI 10.22678/JIC.2024.22.12.023</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">AI 확산기에 AI 윤리의식·창의적 문제해결력·AI 기술이해가 대학생의 학습 성과에 미치는 영향을 실증할 필요. AI 교육 프로그램이 어떻게 설계되어야 윤리의식이 실제 역량으로 이어지는지에 대한 근거가 부족.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">AI 윤리의식·AI 기술이해·창의적 문제해결력의 매개모형 — 윤리의식이 기술이해를 거쳐 문제해결력으로 연결되는 경로.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">설문 기반 실증연구(변수 간 영향관계 + 매개효과 분석).<br>※표본수·측정도구의 구체 수치는 원문 본문 확인 권장.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">대학생 대상 설문 응답. (구체 표본수는 원문 확인)</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① AI 윤리의식은 AI 기술이해에 긍정적 영향.<br>② AI 기술이해는 창의적 문제해결력을 증진하는 중요 요인.<br>③ 특히 윤리의식과 창의적 문제해결력 사이에서 AI 기술이해가 매개 역할을 함(윤리의식→기술이해→문제해결력).</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">AI 윤리 척도·개념을 실제 학습자(대학생) 집단에 적용한 실증 사례 — 대학원 수강생 대상 소논문 설계의 방법론적 참고. 제언: AI 교육 프로그램은 기술 이해와 창의적 문제해결 능력을 함께 강화하도록 설계하고, 대학은 윤리교육과정을 강화해 윤리의식 함양이 기술이해·문제해결로 연결되게 해야 함.<br>【소논문 힌트】전공·지역별 학생으로 확장, 윤리 교육의 빈도·방법에 따른 효과 심층 분석(저자가 남긴 후속 과제).</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2810%29%20%EB%8C%80%ED%95%99%EC%83%9D%EC%9D%98%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EC%9C%A4%EB%A6%AC%EC%9D%98%EC%8B%9D%EC%97%90%20%EA%B4%80%ED%95%9C%20%EC%8B%A4%EC%A6%9D%EC%97%B0%EA%B5%AC.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p11">
+      <div class="ph"><span class="pno" style="background:#2563a8">11</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>The emergence of artificial intelligence ethics auditing (인공지능 윤리 감사의 부상)</h2>
+      <div class="summary">규제 도입을 앞두고 급성장한 AI 윤리 감사(ethics auditing) 생태계를, 7개국 34명의 감사관을 반구조화 인터뷰한 질적 연구로 실증했다. AI 윤리 감사가 실제로 무엇이며 무엇이 부족한지 규명한다.</div>
+      <div class="cit"><b>Schiff, D. S., Kelley, S., &amp; Camacho Ibáñez, J.</b> · 2024 · Big Data &amp; Society 11(4) · DOI 10.1177/20539517241299732 (오픈액세스)</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">내부·외부 감사를 장려하는 규제 도입이 임박하면서 AI 윤리·거버넌스 감사 생태계가 최근 급성장. 그러나 이 진화하는 지형에 대한 이해가 제한적 — 실제 AI 윤리 감사가 무엇이며 무엇이 효과적인지에 대한 실증 근거가 부족.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">AI 윤리 감사(ethics auditing) — 재무감사 단계에 대응하는 절차로 봄(질적·사회기술적 관점).</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">질적 연구 — 7개국 34명 AI 윤리 감사관(민간 부문 내·외부)을 반구조화 인터뷰하여 동기·핵심 감사 활동·과제를 분석.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">민간 부문 내·외부 AI 윤리 감사관 34명 인터뷰(7개국).</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① AI 윤리 감사는 재무감사 단계를 따르나 이해관계자 참여·성공 측정·외부 보고가 취약.<br>② 편향·프라이버시·설명가능성 등 기술지향 원칙에 과집중(다른 원칙·사회기술적 접근 배제) — 규제가 기술적 위험관리에 방점을 둔 것을 반영.<br>③ 감사관이 직면한 과제: 학제 간 기능의 상충하는 요구, 기업 자원·인력 제약, 감사를 가능케 할 기술·데이터 인프라 부족, 모범사례·명료한 규제 가이드가 제한적/부재하여 규제·표준 해석의 상당한 모호성.<br>④ 표준 지형은 EU AI Act·美 NIST AI RMF 중심으로 수렴 조짐.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">'책임'이 문서가 아니라 실제로 검증되는가를 묻는 질적·실무 접근(국내 7편에 전무). 감사 실무의 파편성·미성숙을 실증 진단하고, 규제 해석의 모호성·인프라 부족 등 구조적 과제를 규명.<br>【소논문 힌트】국내 AI 감사 실무(내부통제·품질관리) 현황을 이 프레임으로 조사·비교하는 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2811%29%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EC%9C%A4%EB%A6%AC%20%EA%B0%90%EC%82%AC%EC%9D%98%20%EB%B6%80%EC%83%81_eglish.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p12">
+      <div class="ph"><span class="pno" style="background:#2563a8">12</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>Auditing large language models: a three-layered approach (LLM 감사: 3계층 접근)</h2>
+      <div class="summary">범용·불투명·창발적인 대규모 언어모델(LLM)을 단일 감사로는 신뢰·책임을 확보하기 어렵다고 보고, 거버넌스·모델·응용의 3계층 감사가 상호보완하는 프레임워크를 제안했다.</div>
+      <div class="cit"><b>Mökander, J., Schuett, J., Kirk, H. R., &amp; Floridi, L.</b> · 2024 · AI and Ethics 4(4), 1085–1115 · DOI 10.1007/s43681-023-00289-2</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">대규모 언어모델(LLM)은 AI 연구의 큰 진전이나 상당한 윤리적·사회적 도전을 동반. 감사(auditing)가 유망한 거버넌스 장치로 지목돼 왔으나, 기존 감사 절차는 창발적(emergent) 능력을 보이고 광범위한 다운스트림 과업에 적응하는 LLM의 거버넌스 과제를 다루지 못함.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">3계층 감사 프레임워크(거버넌스·모델·응용) — 감사를 거버넌스 장치로 보는 관점.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">개념적 프레임워크(blueprint) 설계 — LLM을 감사하는 새로운 3계층 접근 제안.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">기존 감사·거버넌스 문헌 및 LLM 생태계 분석(개념 연구).</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">3계층이 상호보완·정보제공하며 완결 —<br>① 거버넌스 감사(LLM을 설계·배포하는 기술제공자 대상)<br>② 모델 감사(사전학습 후 배포 전 LLM 대상)<br>③ 응용 감사(LLM 기반 애플리케이션 대상). 구조화된 방식으로 수행될 때 세 계층이 어떻게 서로를 보완·정보제공하는지 제시.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">생성형 AI(LLM)의 '신뢰=How'를 기술 층위로 구체화하는 프레임워크(국내 7편에 전무). LLM의 범용성·창발성을 계층별 역할분담으로 대응 — 오늘 자료에서 가장 '새 방법론'다운 후보.<br>【소논문 힌트】특정 국내 LLM 서비스에 3계층 감사를 적용해 각 계층에서 무엇을 점검할지 구체화하는 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2812%29%20LLM%20%EA%B0%90%EC%82%AC%203%EA%B3%84%EC%B8%B5%20%EC%A0%91%EA%B7%BC_english.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p13">
+      <div class="ph"><span class="pno" style="background:#2563a8">13</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>직업규제 영역의 인공지능 기능대체와 고위험성 판단기준 — 직업의 자유 제한 법리에 기초한 기능적 등가성 기준의 제안</h2>
+      <div class="summary">인공지능기본법의 '고영향 AI'가 시행령 열거에 의존해 열거 밖 전문가 기능대체 AI를 평가하기 어렵다는 문제에서, 직업의 자유 제한 법리에 기초한 '기능적 등가성' 기준과 2축 위험 매트릭스를 제안했다.</div>
+      <div class="cit"><b>김민규</b> · 2026 · 법조 75권 2호(통권 776호), 401–443쪽 · DOI 10.17007/klaj.2026.75.2.012</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">인공지능기본법(2026.1.22 시행)이 '고영향 AI'를 도입했으나 시행령 열거에 의존 → 열거 범위 밖에서 인간 전문가의 핵심 기능을 대체하는 AI(법률·의료·금융 등)를 어떻게 평가할지 기준 부족.<br>※현행법은 '고영향', 비교법·규제이론은 '고위험(high-risk)' 용어가 통상 — 저자는 더 넓은 '고위험 AI'로 분석. 목차: Ⅰ서론 Ⅱ입법경과·현행 위험규율 구조 Ⅲ현행 위험개념의 구조와 공백(한국 열거주의·EU 위험기반·미국 직업규제 연결) Ⅳ직업의 자유 제한 법리와 보호법익 Ⅴ기능적 등가성 판단기준.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">직업의 자유 제한 법리(단계이론) — 직업규제는 해당 행위가 국민의 생명·신체·안전·권리·재산에 중대한 위험을 초래할 수 있다는 선행된 사회적·법적 판단의 표현. 기능적 등가성을 '동일효력 인정'이 아니라 '보호목적적 위험추정 기준'으로 재구성.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">법해석론(비교법 Ⅲ장: 한국·EU·미국) + 위험 매트릭스 구성. 변호사·의료인 판례가 보여주는 보호목적을 근거로 '직업규제는 고위험성의 결과이지 정의가 아니다'를 도출.</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">인공지능기본법[법률 제21311호, 2026.1.22 시행]·시행령, 직업규제 관련 법령(면허·자격·허가·등록·신고), 변호사·의료인 관련 판례, EU·미국 비교 법제.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① 기능적 등가성 기준을 '보호목적적 위험추정'으로 재정의(동일효력 인정이 아님).<br>②<br>①기능의 성질<br>②제공대상 2축 위험 매트릭스 제시.<br>③ 4판별요소(개별사실 입력·특정 선택지 제시·합리적 신뢰 유발·후속행위 직접성)로 '단순 정보제공'과 '실질적 판단지원'을 구별.<br>④ 결론: 직업규제 기능대체형 AI는 현행 열거주의만으로 포착되기 어려우며, 기능적 등가성 기준이 시행령·영향평가·특별법 설계에서 보완적 중간기준으로 활용될 필요.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">열거주의의 예측가능성을 훼손하지 않으면서 법률·의료·금융 등 다양한 직역의 기능대체형 서비스 위험을 사전 평가하고 사후 책임구조를 설계하는 중간기준 제시. 김경동<br>③·백수원<br>⑧의 '고영향 AI 개념 모호성'을 직업규제 관점에서 구체적 판단도구로 발전(2026년 시행 후 최신).<br>【소논문 힌트】특정 직역(법률·의료 등)의 실제 AI 서비스에 2축 매트릭스·4판별요소를 적용해 고위험 여부를 판정하는 사례 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2813%29%20%EC%A7%81%EC%97%85%EA%B7%9C%EC%A0%9C%20%EC%98%81%EC%97%AD%EC%9D%98%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EA%B8%B0%EB%8A%A5%EB%8C%80%EC%B2%B4%EC%99%80%20%EA%B3%A0%EC%9C%84%ED%97%98%EC%84%B1%20%ED%8C%90%EB%8B%A8%EA%B8%B0%EC%A4%80.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+    <article class="paper" id="p14">
+      <div class="ph"><span class="pno" style="background:#2563a8">14</span>
+        <span class="pbadge">추가 7편</span></div>
+      <h2>인공지능 시대의 '손해'에 대한 관견(管見) — '정서적 의존' 등의 비재산적 손해를 중심으로</h2>
+      <div class="summary">생성형 AI 챗봇과의 상호작용에서 발생하는 '정서적 의존'이 민사법상 '손해'로 평가될 수 있는지를, 판례·학설 분석과 민법 제751조 개정안·인공지능기본법 검토를 통해 다뤘다.</div>
+      <div class="cit"><b>이수경(계명대)</b> · 2026 · 민사법의 이론과 실무 29권 2호, 157–192쪽 (DOI 미부여)</div>
+      <div class="row"><div class="rk">① 연구배경(필요성)</div><div class="rv">미국 Character.AI 사건(14세 소년이 챗봇에 '정서적으로 의존'하다 자살, 어머니가 AI 기업 상대로 심리적 피해를 이유로 제기한 최초의 소송, 2024)을 배경으로, 생성형 AI 챗봇과의 상호작용에서 발생하는 '정서적 의존'이 민사법상 '손해'로 평가될 수 있는지를 다룸. 전통적으로 재산적 손해 중심이던 손해 개념의 재검토가 필요. 목차: Ⅰ들어가는 말 Ⅱ생성형 AI 활용에 따른 정서적 의존 문제 Ⅲ챗봇에 의한 정서적 의존의 법적 고찰 Ⅳ나가며.</div></div><div class="row"><div class="rk">② 연구이론</div><div class="rv">불법행위책임론 · 비재산적 손해(인격권 침해) 개념의 규범적 확장 — 손해가 경제적 불이익에 국한되지 않고 규범적으로 확장되어 온 흐름.</div></div><div class="row"><div class="rk">③ 연구방법론</div><div class="rv">판례·학설 분석(손해 개념의 규범적 확장 검토) + 사례 분석(상담 과정의 '감정적 전이' 판례) + 법령·개정안 검토(민법 제751조 개정안, 인공지능기본법상 의무 위반 여부).</div></div><div class="row"><div class="rk">④ 데이터</div><div class="rv">국내외 판례(Character.AI 사건=Garcia v. Character Technologies, 서울북부지법 상담 판례 등), 민법 제751조 개정안, 인공지능기본법 조문.</div></div><div class="row"><div class="rk">⑤ 연구결과</div><div class="rv">① 정서적 의존이 '일정한 경우 비재산적 손해로서 인정될 가능성'을 제시.<br>② AI 챗봇 개발 단계에서 위험 요소 식별 시 보호의무에 따라 극단적 상황을 예견할 수 있다는 점에서 상담 사례와 공통점이 있다고 판단(개발자의 보호의무 근거).<br>③ 인공지능기본법상 의무 위반 여부도 간략히 검토.</div></div><div class="row"><div class="rk">⑥ 연구 특장점(시사점)</div><div class="rv">'책임'을 민사 손해배상 층위에서 구체화 — 생성형 AI 챗봇의 정서적 피해라는 신규 쟁점(학생 관심도 높음). Schiff<br>⑪·Mökander<br>⑫가 감사·기술로 다룬 '책임'을 이 논문은 민사 손해배상·개발자 보호의무로 접근. 인공지능기본법 의무와 민사책임을 연결(2026년 최신).<br>【소논문 힌트】생성형 AI 챗봇의 개발자 보호의무 범위, 정서적 의존 손해의 입증·산정 방법 연구.</div></div>
+      <div class="src">원문/출처: <a href="https://raw.githubusercontent.com/YangGuiBee/AIG2/main/02/%2814%29%20%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%20%EC%8B%9C%EB%8C%80%EC%9D%98%20%27%EC%86%90%ED%95%B4%27%EC%97%90%20%EB%8C%80%ED%95%9C%20%EA%B4%80%EA%B2%AC%28%E7%AE%A1%E8%A6%8B%29.pdf" target="_blank">원문 PDF 열기 (https://github.com/YangGuiBee/AIG2/tree/main/02) ▸</a></div>
+    </article>
+
+<div class="foot">AI거버넌스 강의 · 2강 선행연구 14편 참조자료 · github.com/YangGuiBee/AIG2<br>
+기존 7편 원문: github.com/YangGuiBee/AIG/tree/main/TextBook-02 · 무-지어내기: 미확인 항목은 원문 재확인 필요</div>
+</div><canvas id="inkCanvas"></canvas>
+
+<div id="inkBar">
+  <div id="inkHead">
+    <span class="ttl">강의 필기</span>
+    <button id="inkHelpBtn" title="도움말">?</button>
+    <button id="inkFold" title="도구모음 숨기기 (T)">─</button>
+  </div>
+  <div id="inkBody">
+    <div class="inkRow">
+      <button id="inkMode" class="wide">필기 켜기 (Esc)</button>
+    </div>
+    <div class="inkRow sep">
+      <button class="sw" data-pen="#d32f2f" style="background:#d32f2f" title="빨강 펜 (1)"></button>
+      <button class="sw" data-pen="#1565c0" style="background:#1565c0" title="파랑 펜 (2)"></button>
+      <button class="sw" data-pen="#111111" style="background:#111" title="검정 펜 (3)"></button>
+      <button class="sw" data-hi="#ffd400" style="background:#ffd400" title="노랑 형광펜 (4)"></button>
+      <button class="sw" data-hi="#5ce65c" style="background:#5ce65c" title="초록 형광펜 (5)"></button>
+    </div>
+    <div class="inkRow">
+      <button data-w="0.6" class="wide" title="얇게">얇게</button>
+      <button data-w="1" class="wide on" title="보통">보통</button>
+      <button data-w="1.9" class="wide" title="굵게">굵게</button>
+    </div>
+    <div class="inkRow sep">
+      <button id="inkUline" class="wide" title="밑줄 — 글줄에 자동 정렬 (U)">밑줄</button>
+      <button id="inkHline" class="wide" title="형광 줄 — 글줄 높이에 자동 정렬 (H)">형광 줄</button>
+    </div>
+    <div class="inkRow">
+      <button id="inkEraser" class="wide" title="지우개 (E)">지우개</button>
+      <button id="inkLaser" class="wide" title="레이저 포인터 (L)">레이저</button>
+    </div>
+    <div class="inkRow">
+      <button id="inkUndo" class="wide" title="되돌리기 (Ctrl+Z)">되돌리기</button>
+      <button id="inkClear" class="wide danger" title="전체 지우기">전체 지우기</button>
+    </div>
+    <div class="inkRow sep">
+      <button id="inkBoard" class="wide">칠판 창 열기</button>
+    </div>
+    <div id="inkHint">펜 = 필기 · 손가락 = 화면 이동<br>밑줄은 문장을 따라 긋거나, 한 번 탭 = 그 줄 전체</div>
+  </div>
+</div>
+
+<div id="inkToast"></div>
+
+<div id="inkHelp"><div class="panel">
+  <h4>기본 사용법</h4>
+  <ul>
+    <li><b>필기 켜기</b>를 누르면 화면 위에 바로 그릴 수 있습니다. 펜·형광펜은 손으로 그리는 대로 그려집니다.</li>
+    <li><b>밑줄</b> 도구를 고르면 손이 흔들려도 <b>글줄에 딱 맞춰 반듯한 직선</b>이 그어집니다. 문장을 따라 그으면 그 구간만, 문장을 <b>한 번 톡 누르면 그 줄 전체</b>에 밑줄이 들어갑니다. 색은 왼쪽 펜 색(빨강·파랑·검정)을 따릅니다.</li>
+    <li><b>형광 줄</b>은 같은 방식으로 글줄 높이에 맞춘 형광펜 띠를 칠합니다. 색은 노랑·초록 중 마지막에 고른 것을 씁니다.</li>
+    <li>필기 모드에서 <b>펜은 필기, 손가락은 화면 이동(스크롤)</b>입니다. 손을 화면에 올려두어도 선이 그려지지 않습니다.</li>
+    <li>펜 뒤쪽 지우개 버튼이 있는 스타일러스는 <b>뒤집으면 자동으로 지우개</b>가 됩니다.</li>
+    <li>밑줄은 문서 좌표에 붙으므로 <b>스크롤해도 해당 문장을 따라 이동</b>합니다.</li>
+    <li>필기 내용은 자동 저장되어 브라우저를 닫았다 열어도 유지됩니다.</li>
+  </ul>
+  <h4>본문 고치기</h4>
+  <ul>
+    <li>도구모음의 <b>[본문 편집]</b>을 누르면 화면의 글자를 워드처럼 직접 클릭해 고칠 수 있습니다. 편집 중에는 필기가 꺼지고 본문 둘레에 노란 점선이 표시됩니다.</li>
+    <li><b>[저장]</b>(또는 <kbd>Ctrl</kbd>+<kbd>S</kbd>)을 누르면 저장 위치를 묻습니다. <b>처음 한 번만</b> 원래 폴더에서 이 파일을 지정해 덮어쓰면, 그 뒤로는 [저장] 한 번에 원본이 바로 갱신됩니다. (Chrome·Edge 기준. 다른 브라우저에서는 내려받기 폴더에 저장되므로 직접 옮겨야 합니다.)</li>
+    <li>저장하지 않고 창을 닫아도 수정분은 임시 보관되어, 다음에 열 때 되살릴지 물어봅니다. 다만 <b>임시 보관은 안전망일 뿐</b>이라 다른 PC에서는 보이지 않습니다. 확정된 수정은 반드시 저장하십시오.</li>
+    <li><b>[편집 전으로 되돌리기]</b>는 이 화면에서 고친 것을 모두 버리고 파일을 열었을 때 상태로 되돌립니다.</li>
+    <li>글자를 고치는 것은 안전하지만, <b>인용 표기의 <sup>[n]</sup> 부분이나 표의 칸 구조를 지우면</b> 팝업 연결이 끊길 수 있습니다. 문장 내용만 손보시는 편이 좋습니다.</li>
+  </ul>
+
+  <h4>인용 표기와 참고문헌</h4>
+  <ul>
+    <li>본문의 <b>Gasser &amp; Almeida(2017)<sup>[8]</sup></b> 같은 인용 표기를 누르면, 그 논문에서 <b>해당 대목에 해당하는 원문 문단</b>이 팝업으로 열립니다. 원문(영어)과 한국어 번역, 그리고 몇 쪽 어느 절인지를 함께 보여 줍니다.</li>
+    <li>팝업 아래 <b>[전문 PDF 내려받기]</b>를 누르면 원문을 바로 받을 수 있고, <b>[참고문헌 [n]로 이동]</b>을 누르면 9장의 해당 항목으로 이동합니다. 이동 후 화면 왼쪽 아래 <b>[← 본문으로 돌아가기]</b>로 원래 읽던 자리로 되돌아옵니다.</li>
+    <li>9장 참고문헌에서 <b>[n] 번호</b>를 누르면 그 문헌을 인용한 본문 자리로 갑니다.</li>
+    <li><b>필기 모드에서는 인용을 누를 수 없습니다.</b> <kbd>Esc</kbd>로 필기를 끄고 누르십시오.</li>
+    <li>발췌마다 <b>원문 확인함</b> / <b>초록·재인용으로 확인</b> 배지를 달아 두었습니다. 페이월 때문에 본문을 열지 못한 문헌은 후자로 표시되니, 논문에 인용하실 때는 반드시 원문을 직접 대조하십시오.</li>
+  </ul>
+
+  <h4>단축키</h4>
+  <ul>
+    <li><kbd>Esc</kbd> 필기 / 탐색 모드 전환</li>
+    <li><kbd>1</kbd> 빨강 <kbd>2</kbd> 파랑 <kbd>3</kbd> 검정 <kbd>4</kbd><kbd>5</kbd> 형광펜</li>
+    <li><kbd>U</kbd> 밑줄 · <kbd>H</kbd> 형광 줄</li>
+    <li><kbd>E</kbd> 지우개 · <kbd>L</kbd> 레이저 포인터</li>
+    <li><kbd>Ctrl</kbd>+<kbd>Z</kbd> 되돌리기</li>
+    <li><kbd>T</kbd> <b>도구모음 완전히 숨기기 / 다시 보이기</b> — 숨긴 상태에서도 필기와 단축키는 그대로 동작합니다. 도구모음 오른쪽 위 <b>─</b> 버튼도 같은 기능입니다.</li>
+    <li><kbd>Ctrl</kbd>+<kbd>+</kbd> / <kbd>-</kbd> 글자 확대·축소 (필기 위치 유지됨)</li>
+  </ul>
+  <h4>두 화면(강사용 · 칠판) 구성</h4>
+  <ul>
+    <li><b>복제(미러링) 모드</b> — <kbd>Win</kbd>+<kbd>P</kbd> → "복제". 강사용 화면에 그린 것이 칠판에 그대로 나옵니다. 가장 확실한 방법이며 추가 설정이 필요 없습니다. 도구모음이 칠판에도 보이는 것이 신경 쓰이면, 강의 시작 전에 색·굵기를 미리 고르고 <b>[필기 켜기]</b>를 누른 뒤 <kbd>T</kbd>를 눌러 도구모음을 숨기십시오. 숨긴 뒤에도 펜 필기와 <kbd>1</kbd>~<kbd>5</kbd>, <kbd>E</kbd>, <kbd>L</kbd>, <kbd>Ctrl</kbd>+<kbd>Z</kbd>는 그대로 동작합니다. 다시 <kbd>T</kbd>를 누르면 도구모음이 돌아옵니다.</li>
+    <li><b>확장 모드</b> — <kbd>Win</kbd>+<kbd>P</kbd> → "확장" 상태라면 <b>[칠판 창 열기]</b>를 누르십시오. 새 창이 열리면 그 창을 칠판 쪽 화면으로 끌어다 놓고 <kbd>F11</kbd>로 전체화면 하십시오. 강사용 창에서 그린 밑줄과 스크롤이 칠판 창에 실시간으로 그대로 표시됩니다. 칠판 창에는 도구모음이 표시되지 않습니다.</li>
+    <li>확장 모드에서 <b>펜이 엉뚱한 화면에 반응</b>하면, 제어판 → <b>태블릿 PC 설정</b> → [설정] → 화면을 강사용 모니터로 지정하십시오.</li>
+  </ul>
+  <p style="margin:16px 0 0;text-align:right"><button onclick="document.getElementById('inkHelp').classList.remove('show')" style="background:#1f4e5f;color:#fff;border:0;border-radius:6px;padding:8px 18px;font-size:13px;cursor:pointer">닫기</button></p>
+</div></div>
+
+<script>
+(function(){
+  "use strict";
+  var IS_BOARD = /(^|#|&)board/.test(location.hash);
+  var cv = document.getElementById('inkCanvas');
+  var ctx = cv.getContext('2d');
+  var bar = document.getElementById('inkBar');
+  var toastEl = document.getElementById('inkToast');
+
+  var strokes = [];          // {tool,color,width,alpha,points:[{x,y}]}
+  var cur = null;
+  var laser = [];            // {x,y,t}
+  var mode = 'nav';          // 'nav' | 'draw'
+  var tool = 'pen';          // 'pen' | 'hi' | 'underline' | 'hiline' | 'eraser' | 'laser'
+  var color = '#d32f2f';
+  var penColor = '#d32f2f', hiColor = '#ffd400';
+  var wScale = 1;
+  var version = 0;
+  var boardWin = null;
+  var scrollDrag = null;
+  var dirty = true;
+
+  var BASE = { pen: 3.0, hi: 20, underline: 3.0, hiline: 20 };
+  var KEY = 'inkStrokes:' + (location.pathname.split('/').pop() || 'doc');
+
+  /* ---------- 캔버스 ---------- */
+  function resize(){
+    var dpr = window.devicePixelRatio || 1;
+    cv.width = Math.round(innerWidth * dpr);
+    cv.height = Math.round(innerHeight * dpr);
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dirty = true;
+  }
+
+  function paintStroke(s){
+    var p = s.points; if(!p.length) return;
+    ctx.save();
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.globalAlpha = s.alpha;
+    ctx.strokeStyle = s.color; ctx.fillStyle = s.color;
+    ctx.lineWidth = s.width;
+    if(p.length === 1){
+      ctx.beginPath(); ctx.arc(p[0].x, p[0].y, s.width/2, 0, 6.2832); ctx.fill();
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(p[0].x, p[0].y);
+      for(var i=1;i<p.length-1;i++){
+        var mx=(p[i].x+p[i+1].x)/2, my=(p[i].y+p[i+1].y)/2;
+        ctx.quadraticCurveTo(p[i].x, p[i].y, mx, my);
+      }
+      ctx.lineTo(p[p.length-1].x, p[p.length-1].y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function redraw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    ctx.save();
+    ctx.translate(-window.scrollX, -window.scrollY);
+    for(var i=0;i<strokes.length;i++) paintStroke(strokes[i]);
+    if(cur && cur.points) paintStroke(cur);
+    ctx.restore();
+    if(laser.length) paintLaser();
+  }
+
+  function paintLaser(){
+    var now = performance.now(), LIFE = 650;
+    while(laser.length && now - laser[0].t > LIFE) laser.shift();
+    if(!laser.length) return;
+    ctx.save();
+    ctx.translate(-window.scrollX, -window.scrollY);
+    ctx.lineCap='round'; ctx.lineJoin='round';
+    for(var i=1;i<laser.length;i++){
+      var a = 1 - (now - laser[i].t)/LIFE;
+      ctx.globalAlpha = Math.max(0,a)*0.75;
+      ctx.strokeStyle = '#ff2b2b'; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.moveTo(laser[i-1].x, laser[i-1].y); ctx.lineTo(laser[i].x, laser[i].y); ctx.stroke();
+    }
+    var last = laser[laser.length-1];
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = '#ff2b2b'; ctx.shadowBlur = 18;
+    ctx.beginPath(); ctx.arc(last.x, last.y, 7, 0, 6.2832); ctx.fill();
+    ctx.fillStyle = '#ff2b2b'; ctx.shadowBlur = 26;
+    ctx.beginPath(); ctx.arc(last.x, last.y, 4, 0, 6.2832); ctx.fill();
+    ctx.restore();
+  }
+
+  function loop(){
+    if(dirty || laser.length){ redraw(); dirty = laser.length > 0; }
+    sync();
+    requestAnimationFrame(loop);
+  }
+  function invalidate(){ dirty = true; }
+
+  addEventListener('resize', function(){ resize(); });
+  addEventListener('scroll', invalidate, {passive:true});
+
+  /* ---------- 저장 ---------- */
+  var saveTimer = null;
+  function save(){
+    if(IS_BOARD) return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      try{ localStorage.setItem(KEY, JSON.stringify(strokes)); }catch(e){}
+    }, 800);
+  }
+  function load(){
+    if(IS_BOARD) return;
+    try{
+      var raw = localStorage.getItem(KEY);
+      if(raw){ var a = JSON.parse(raw); if(a && a.length){ strokes = a; version++; invalidate(); toast('이전 필기를 복원했습니다 · 지우려면 [전체 지우기]'); } }
+    }catch(e){}
+  }
+
+  function toast(msg){
+    if(IS_BOARD) return;
+    toastEl.textContent = msg; toastEl.classList.add('show');
+    clearTimeout(toast._t); toast._t = setTimeout(function(){ toastEl.classList.remove('show'); }, 2200);
+  }
+
+  /* ---------- 입력 ---------- */
+  function docPt(e){ return { x: e.clientX + window.scrollX, y: e.clientY + window.scrollY }; }
+
+  function distSeg(px,py,ax,ay,bx,by){
+    var dx=bx-ax, dy=by-ay, L=dx*dx+dy*dy;
+    var t = L ? ((px-ax)*dx + (py-ay)*dy)/L : 0;
+    t = t<0?0:(t>1?1:t);
+    var qx=ax+t*dx, qy=ay+t*dy;
+    return Math.sqrt((px-qx)*(px-qx)+(py-qy)*(py-qy));
+  }
+
+  function eraseAt(pt){
+    var R = 11, changed = false;
+    for(var i=strokes.length-1;i>=0;i--){
+      var p = strokes[i].points, hit = false;
+      var r = R + strokes[i].width/2;
+      if(p.length === 1){
+        var dx=p[0].x-pt.x, dy=p[0].y-pt.y;
+        hit = (dx*dx+dy*dy < r*r);
+      } else {
+        for(var j=1;j<p.length;j++){
+          if(distSeg(pt.x,pt.y,p[j-1].x,p[j-1].y,p[j].x,p[j].y) < r){ hit = true; break; }
+        }
+      }
+      if(hit){ strokes.splice(i,1); changed = true; }
+    }
+    if(changed){ version++; invalidate(); save(); }
+  }
+
+  /* 포인터 아래의 '글줄' 상자를 찾아 문서 좌표로 반환 */
+  function blockAncestor(el){
+    while(el && el !== document.body){
+      var d = getComputedStyle(el).display;
+      if(d === 'block' || d === 'list-item' || d === 'table-cell') return el;
+      el = el.parentElement;
+    }
+    return document.body;
+  }
+  function snapLine(cx, cy){
+    var pe = cv.style.pointerEvents;
+    cv.style.pointerEvents = 'none';
+    var range = null;
+    try{
+      if(document.caretRangeFromPoint) range = document.caretRangeFromPoint(cx, cy);
+      else if(document.caretPositionFromPoint){
+        var cp = document.caretPositionFromPoint(cx, cy);
+        if(cp){ range = document.createRange(); range.setStart(cp.offsetNode, cp.offset); }
+      }
+    }catch(err){}
+    cv.style.pointerEvents = pe;
+    if(!range) return null;
+    var node = range.startContainer;
+    if(!node || node.nodeType !== 3 || !node.nodeValue.trim()) return null;
+    var off = range.startOffset, len = node.nodeValue.length;
+    if(!len) return null;
+    var r = document.createRange();
+    if(off >= len){ r.setStart(node, len-1); r.setEnd(node, len); }
+    else { r.setStart(node, off); r.setEnd(node, off+1); }
+    var rc = r.getClientRects();
+    if(!rc.length) return null;
+    var base = rc[0];
+    if(Math.abs(cy - (base.top + base.height/2)) > base.height * 1.3) return null;
+    /* 같은 시각적 줄에 속한 조각 rect들을 모두 합쳐 줄 전체 범위를 구한다.
+       (<strong>, <em> 등 인라인 요소 때문에 한 줄이 여러 rect로 쪼개짐) */
+    var L = base.left, R2 = base.right;
+    var bc = base.top + base.height/2;
+    try{
+      var blk = blockAncestor(node.parentElement);
+      var r2 = document.createRange(); r2.selectNodeContents(blk);
+      var rs = r2.getClientRects();
+      for(var i=0;i<rs.length;i++){
+        if(rs[i].width < 1) continue;
+        var c = rs[i].top + rs[i].height/2;
+        if(Math.abs(c - bc) < Math.max(4, base.height*0.6)){
+          if(rs[i].left < L) L = rs[i].left;
+          if(rs[i].right > R2) R2 = rs[i].right;
+        }
+      }
+    }catch(err){}
+    var sx = window.scrollX, sy = window.scrollY;
+    return { top: base.top + sy, bottom: base.bottom + sy, height: base.height,
+             left: L + sx, right: R2 + sx };
+  }
+
+  function onDown(e){
+    if(IS_BOARD || mode !== 'draw') return;
+    if(e.pointerType === 'touch'){
+      scrollDrag = { px:e.clientX, py:e.clientY, sx:window.scrollX, sy:window.scrollY, id:e.pointerId };
+      cv.setPointerCapture(e.pointerId);
+      return;
+    }
+    e.preventDefault();
+    cv.setPointerCapture(e.pointerId);
+    var pt = docPt(e);
+    var isEraserTip = (e.buttons & 32) === 32 || e.button === 5;
+
+    if(tool === 'eraser' || isEraserTip){ cur = null; eraseAt(pt); cur = '__erase__'; return; }
+    if(tool === 'laser'){ laser.push({x:pt.x, y:pt.y, t:performance.now()}); invalidate(); cur='__laser__'; return; }
+
+    if(tool === 'underline' || tool === 'hiline'){
+      var ln = snapLine(e.clientX, e.clientY);
+      var uy, uw, ul, ur;
+      if(ln){
+        uy = (tool === 'underline') ? ln.bottom - 1 : ln.top + ln.height/2;
+        uw = (tool === 'underline') ? Math.max(2.5, BASE.pen * wScale * 1.05) : ln.height * 0.98;
+        ul = ln.left; ur = ln.right;
+      } else {
+        uy = pt.y;
+        uw = (tool === 'underline') ? Math.max(2.5, BASE.pen * wScale * 1.05) : BASE.hi * wScale;
+        ul = -1e7; ur = 1e7;
+      }
+      var ux = Math.min(Math.max(pt.x, ul), ur);
+      cur = {
+        tool: tool, line: true, snapped: !!ln,
+        color: (tool === 'underline') ? penColor : hiColor,
+        width: uw,
+        alpha: (tool === 'underline') ? 1 : 0.32,
+        points: [{x:ux, y:uy}, {x:ux, y:uy}],
+        _y: uy, _l: ul, _r: ur
+      };
+      invalidate(); return;
+    }
+
+    var pr = (e.pointerType === 'pen' && e.pressure > 0) ? (0.55 + e.pressure) : 1;
+    cur = {
+      tool: tool,
+      color: color,
+      width: BASE[tool] * wScale * (tool === 'pen' ? pr : 1),
+      alpha: tool === 'hi' ? 0.32 : 1,
+      points: [pt]
+    };
+    invalidate();
+  }
+
+  function onMove(e){
+    if(IS_BOARD) return;
+    if(scrollDrag && e.pointerId === scrollDrag.id){
+      window.scrollTo(scrollDrag.sx - (e.clientX - scrollDrag.px), scrollDrag.sy - (e.clientY - scrollDrag.py));
+      invalidate(); return;
+    }
+    if(mode !== 'draw' || !cur) return;
+    e.preventDefault();
+    var pt = docPt(e);
+    if(cur === '__erase__'){ eraseAt(pt); return; }
+    if(cur === '__laser__'){ laser.push({x:pt.x, y:pt.y, t:performance.now()}); invalidate(); return; }
+    if(cur.line){
+      cur.points[1] = { x: Math.min(Math.max(pt.x, cur._l), cur._r), y: cur._y };
+      invalidate(); return;
+    }
+    var last = cur.points[cur.points.length-1];
+    if(Math.abs(pt.x-last.x) + Math.abs(pt.y-last.y) < 1.2) return;
+    cur.points.push(pt);
+    invalidate();
+  }
+
+  function onUp(e){
+    if(scrollDrag && e.pointerId === scrollDrag.id){ scrollDrag = null; return; }
+    if(IS_BOARD || !cur) return;
+    if(cur !== '__erase__' && cur !== '__laser__'){
+      if(cur.line && Math.abs(cur.points[1].x - cur.points[0].x) < 8){
+        if(cur.snapped){ cur.points = [{x:cur._l, y:cur._y}, {x:cur._r, y:cur._y}]; }
+        else { cur = null; invalidate(); return; }
+      }
+      delete cur._y; delete cur._l; delete cur._r;
+      strokes.push(cur); version++; save();
+    }
+    cur = null; invalidate();
+  }
+
+  cv.addEventListener('pointerdown', onDown);
+  cv.addEventListener('pointermove', onMove);
+  cv.addEventListener('pointerup', onUp);
+  cv.addEventListener('pointercancel', onUp);
+  cv.addEventListener('contextmenu', function(e){ if(mode==='draw') e.preventDefault(); });
+
+  /* ---------- 모드/도구 ---------- */
+  var modeBtn = document.getElementById('inkMode');
+  function setMode(m){
+    mode = m;
+    cv.style.pointerEvents = (m === 'draw') ? 'auto' : 'none';
+    document.body.classList.toggle('ink-draw', m === 'draw');
+    modeBtn.textContent = (m === 'draw') ? '필기 중 · 끄기 (Esc)' : '필기 켜기 (Esc)';
+    modeBtn.classList.toggle('on', m === 'draw');
+  }
+  function setTool(t, c){
+    tool = t;
+    if(c){
+      if(t === 'pen' || t === 'underline') penColor = c;
+      else if(t === 'hi' || t === 'hiline') hiColor = c;
+    }
+    var penOn = (t === 'pen' || t === 'underline'), hiOn = (t === 'hi' || t === 'hiline');
+    color = hiOn ? hiColor : penColor;
+    document.querySelectorAll('#inkBar .sw').forEach(function(b){
+      b.classList.toggle('on', (penOn && b.dataset.pen === penColor) || (hiOn && b.dataset.hi === hiColor));
+    });
+    document.getElementById('inkEraser').classList.toggle('on', t === 'eraser');
+    document.getElementById('inkLaser').classList.toggle('on', t === 'laser');
+    document.getElementById('inkUline').classList.toggle('on', t === 'underline');
+    document.getElementById('inkHline').classList.toggle('on', t === 'hiline');
+    if(mode !== 'draw') setMode('draw');
+  }
+
+  document.querySelectorAll('#inkBar .sw').forEach(function(b){
+    b.addEventListener('click', function(){
+      if(b.dataset.pen) setTool(tool === 'underline' ? 'underline' : 'pen', b.dataset.pen);
+      else setTool(tool === 'hiline' ? 'hiline' : 'hi', b.dataset.hi);
+    });
+  });
+  document.getElementById('inkUline').addEventListener('click', function(){ setTool('underline'); });
+  document.getElementById('inkHline').addEventListener('click', function(){ setTool('hiline'); });
+  document.querySelectorAll('#inkBar [data-w]').forEach(function(b){
+    b.addEventListener('click', function(){
+      wScale = parseFloat(b.dataset.w);
+      document.querySelectorAll('#inkBar [data-w]').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+    });
+  });
+  modeBtn.addEventListener('click', function(){ setMode(mode === 'draw' ? 'nav' : 'draw'); });
+  document.getElementById('inkEraser').addEventListener('click', function(){ setTool('eraser'); });
+  document.getElementById('inkLaser').addEventListener('click', function(){ setTool('laser'); });
+  document.getElementById('inkUndo').addEventListener('click', function(){
+    if(strokes.length){ strokes.pop(); version++; invalidate(); save(); }
+  });
+  document.getElementById('inkClear').addEventListener('click', function(){
+    if(!strokes.length) return;
+    if(confirm('이 문서의 필기를 모두 지울까요?')){ strokes = []; version++; invalidate(); save(); toast('필기를 모두 지웠습니다'); }
+  });
+  function toggleBar(){
+    var hidden = bar.classList.toggle('folded');
+    if(hidden) toast('도구모음 숨김 · T를 다시 누르면 나타납니다' + (mode === 'draw' ? ' (필기는 계속 가능)' : ''));
+  }
+  document.getElementById('inkFold').addEventListener('click', toggleBar);
+  document.getElementById('inkHelpBtn').addEventListener('click', function(){ document.getElementById('inkHelp').classList.add('show'); });
+  document.getElementById('inkHelp').addEventListener('click', function(e){ if(e.target === this) this.classList.remove('show'); });
+
+  addEventListener('keydown', function(e){
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if(e.key === 'Escape'){ setMode(mode === 'draw' ? 'nav' : 'draw'); return; }
+    if((e.ctrlKey||e.metaKey) && e.key.toLowerCase() === 'z'){ e.preventDefault(); document.getElementById('inkUndo').click(); return; }
+    if(e.ctrlKey || e.metaKey || e.altKey) return;
+    var k = e.key.toLowerCase();
+    if(k === '1') setTool(tool === 'underline' ? 'underline' : 'pen', '#d32f2f');
+    else if(k === '2') setTool(tool === 'underline' ? 'underline' : 'pen', '#1565c0');
+    else if(k === '3') setTool(tool === 'underline' ? 'underline' : 'pen', '#111111');
+    else if(k === '4') setTool(tool === 'hiline' ? 'hiline' : 'hi', '#ffd400');
+    else if(k === '5') setTool(tool === 'hiline' ? 'hiline' : 'hi', '#5ce65c');
+    else if(k === 'u') setTool('underline');
+    else if(k === 'h') setTool('hiline');
+    else if(k === 'e') setTool('eraser');
+    else if(k === 'l') setTool('laser');
+    else if(k === 't') toggleBar();
+  });
+
+  /* ---------- 도구모음 드래그 ---------- */
+  (function(){
+    var head = document.getElementById('inkHead'), drag = null;
+    head.addEventListener('pointerdown', function(e){
+      if(e.target.tagName === 'BUTTON') return;
+      var r = bar.getBoundingClientRect();
+      drag = { x:e.clientX, y:e.clientY, l:r.left, t:r.top };
+      head.setPointerCapture(e.pointerId);
+    });
+    head.addEventListener('pointermove', function(e){
+      if(!drag) return;
+      bar.style.left = (drag.l + e.clientX - drag.x) + 'px';
+      bar.style.top  = (drag.t + e.clientY - drag.y) + 'px';
+      bar.style.right = 'auto'; bar.style.bottom = 'auto';
+    });
+    head.addEventListener('pointerup', function(){ drag = null; });
+  })();
+
+  /* ---------- 칠판 창 동기화 ---------- */
+  var lastSent = { v:-1, y:-1 };
+  function sync(){
+    if(IS_BOARD || !boardWin || boardWin.closed) return;
+    var y = Math.round(window.scrollY);
+    var needStrokes = (version !== lastSent.v);
+    if(!needStrokes && y === lastSent.y) return;
+    try{
+      boardWin.postMessage({ t:'sync', y:y, v:version, strokes: needStrokes ? strokes : null }, '*');
+      lastSent.v = version; lastSent.y = y;
+    }catch(err){}
+  }
+
+  /* 인용 팝업 등 다른 모듈이 칠판 창으로 메시지를 보낼 통로 */
+  window.__inkSend = function(m){
+    try{ if(!IS_BOARD && boardWin && !boardWin.closed) boardWin.postMessage(m, '*'); }catch(err){}
+  };
+
+  document.getElementById('inkBoard').addEventListener('click', function(){
+    var url = location.href.split('#')[0] + '#board';
+    boardWin = window.open(url, 'lectureBoard', 'width=1280,height=800');
+    lastSent = { v:-1, y:-1 };
+    if(boardWin) toast('칠판 창을 칠판 쪽 화면으로 옮긴 뒤 F11을 누르세요');
+    else toast('팝업이 차단되었습니다. 주소창의 팝업 허용을 눌러 주세요');
+  });
+
+  addEventListener('message', function(e){
+    var d = e.data; if(!d || typeof d !== 'object') return;
+    if(d.t === 'ready'){ lastSent = { v:-1, y:-1 }; sync(); return; }
+    if((d.t === 'cite' || d.t === 'citeClose') && IS_BOARD && window.__citeApply){ window.__citeApply(d); return; }
+    if(d.t === 'sync' && IS_BOARD){
+      if(d.strokes){ strokes = d.strokes; }
+      window.scrollTo(0, d.y);
+      invalidate();
+    }
+  });
+
+  /* ---------- 시작 ---------- */
+  resize();
+  if(IS_BOARD){
+    document.body.classList.add('ink-board');
+    document.title = '[칠판] ' + document.title;
+    try{ if(window.opener) window.opener.postMessage({t:'ready'}, '*'); }catch(err){}
+  } else {
+    load();
+    setTool('pen', '#d32f2f');
+    setMode('nav');
+    setTimeout(function(){ toast('[필기 켜기]를 누르면 펜으로 밑줄을 그을 수 있습니다 · ? 버튼에 사용법'); }, 700);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body></html>
