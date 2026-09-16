@@ -4,7 +4,7 @@
 
 ---
 
-## 오픈채팅방(암호: 20262)
+## 오픈채팅방
 https://open.kakao.com/o/gktIULLi
 
 
