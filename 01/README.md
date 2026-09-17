@@ -2,7 +2,7 @@
 <img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/01/AIG2026-2c_01.JPG'>
 
 ### AI거버넌스 개론 참고 자료
-https://yangguibee.github.io/AIG2/01/AI거버넌스 개론.html
+https://yangguibee.github.io/AIG2/01/AI거버넌스개론.html
 
 ---
 
