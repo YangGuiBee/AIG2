@@ -1,6 +1,7 @@
 # 03 강. EU AI Act (1)
 <img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/03%20-%20EU%20AI%20Act%20(1)/AIG2026-2c_03.JPG'>
 
+---
 
 # ★ 03강 슬라이드 (형광펜 필기 가능)
 <small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/(AIG20262_03)_20260917.html</small>
@@ -8,6 +9,7 @@
 # ★ EU AI Act(1) 참고자료
 <small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_1.html</small>
 
+---
 
 ## EU AI Act (전문, 2026.7.27 개정)
 <small>https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727</small>
