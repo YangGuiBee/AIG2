@@ -1,7 +1,8 @@
 # 01 강. 강의 소개 및 AI 거버넌스 개론
 <img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/01/AIG2026-2c_01.JPG'>
 
-
+### AI거버넌스 개론 참고 자료
+https://yangguibee.github.io/AIG2/01/AI거버넌스 개론.html
 
 ---
 
@@ -11,7 +12,5 @@ https://open.kakao.com/o/gktIULLi
 
 ## 양희정 겸임교수 포트폴리오(개인별 질의응답)
 https://yangguibee.github.io/
-
-
 
 ---
