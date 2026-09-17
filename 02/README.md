@@ -4,3 +4,6 @@ ppt 파일이 노트북에서는 깨지는 글자도 없고 줄간격도 잘 맞
 
 ### AI 법규제의 기초 이론 관련 선행연구 자료
 https://yangguibee.github.io/AIG2/02/AI법이론_선행연구.html
+
+### AI거버넌스 기반의 연구방법론 수강색 설문조사
+https://yangguibee.github.io/AIG2/02/survey_dashboard.html
