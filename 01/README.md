@@ -1,6 +1,7 @@
 # 01 강. 강의 소개 및 AI 거버넌스 개론
 <img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/01/AIG2026-2c_01.JPG'>
-★ ecampus에서 사전 설문조사 진행중입니다~
+
+
 
 ---
 
@@ -12,7 +13,5 @@ https://open.kakao.com/o/gktIULLi
 https://yangguibee.github.io/
 
 
-## 2026.2학기 강의교안
-https://github.com/YangGuiBee/AIG2
 
 ---
