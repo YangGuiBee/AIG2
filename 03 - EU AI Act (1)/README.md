@@ -32,6 +32,6 @@
 <br>
 
 ## 버전 비교
-<small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_vs.html</small>
+<small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_vs_1.html</small>
 
 ---
