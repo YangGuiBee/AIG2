@@ -3,8 +3,11 @@
 
 ## ★ EU AI Act(1) 참고자료
 https://yangguibee.github.io/AIG2/03/EU_AI_Act_1.html
-
+<br>
 <img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/03/2026-1.png'>
+<br>
+<img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/03/2026-2.png'>
+<br>
 
 ## EU AI Act (전문, 2026.7.27 개정)
 https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727
