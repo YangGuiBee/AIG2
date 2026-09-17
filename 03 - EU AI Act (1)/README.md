@@ -3,7 +3,7 @@
 
 ---
 
-# ★ 03강 슬라이드 (형광펜 필기 가능)
+# ★ 강의 교안
 <small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/(AIG20262_03)_20260917.html</small>
 
 # ★ EU AI Act(1) 참고자료
