@@ -14,11 +14,16 @@
 ## EU AI Act (전문, 2026.7.27 개정)
 <small>https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727</small>
 
-
 ## EU AI Act (핵심전문 번역, 2026.7.27 개정)
 <small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_kor.html</small>
 
-## EU AI Act 개요
+## EU AI Act (전체 조문 번역, 2026.7.27 개정)
+<small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_full_kor.html</small>
+
+## EU AI Act (전체 전문 번역, 2026.7.27 개정)
+<small>https://yangguibee.github.io/AIG2/03%20-%20EU%20AI%20Act%20(1)/EU_AI_Act_recitals_kor.html</small>
+
+## EU AI Act Map
 <small>https://yangguibee.github.io/AILawMap/laws/eu-ai-act.html</small>
 
 ---
