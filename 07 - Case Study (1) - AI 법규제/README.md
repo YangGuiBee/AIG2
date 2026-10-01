@@ -14,6 +14,8 @@ AI거버넌스를 위한 법규제 내용을 바탕으로 연구주제를 설정
 국내 KCI 등재 학술지 중에 공학분야에서 AI 관련 논문을 단기간내(3개월이내) 무료 게재가 가능한 학술지 추천<br>
 Astra : 정보화정책, 한국컴퓨터정보학회논문지<br>
 Claude : 한국통신학회논문지 J-KICS, ETRI Journal<br>
+YH : https://www.itservice.or.kr/journal06.html<br>
+
 <br>
 
 KCI 등재 학술지 61종 — 논문 접수현황 및 투고료 정리 → 투고 직전 재확인 필수
