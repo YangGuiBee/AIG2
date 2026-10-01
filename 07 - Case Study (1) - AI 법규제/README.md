@@ -9,7 +9,7 @@
 <br>
 
 ---
-**학술지검색리스트.xls :** 파일(한국학술지인용색인 홈페이지  https://www.kci.go.kr  학술지검색(우수등재,등재)으로 추출) 참조
+**학술지검색리스트.xls :** 파일(한국학술지인용색인 홈페이지  https://www.kci.go.kr  학술지검색(우수등재,등재)으로 추출) 참조<br>
 Astra : 정보화정책, 한국컴퓨터정보학회논문지<br>
 Claude : 한국통신학회논문지 J-KICS, ETRI Journal<br>
 YHJ : IT서비스학회지 https://www.itservice.or.kr/journal06.html<br>
