@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EU AI Act 제10조의 충분한 대표성 요건에 관한 소논문 연구계획 발표자료">
+  <title>EU AI Act 제10조의 충분한 대표성 요건</title>
+  <style>
+    :root {
+      --paper: #f7f5f0;
+      --ink: #17233b;
+      --muted: #5f6877;
+      --accent: #c23b73;
+      --accent-soft: #f4dce7;
+      --line: #d8d3cb;
+      --blue: #245e91;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+    body {
+      background: #1a2030;
+      color: var(--ink);
+      font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      word-break: keep-all;
+    }
+
+    .deck { position: relative; width: 100vw; height: 100vh; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: clamp(42px, 5vw, 84px) clamp(50px, 7vw, 118px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 92% 10%, rgba(194, 59, 115, .10), transparent 25%),
+        var(--paper);
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.omitted { display: none !important; }
+    .slide::after {
+      content: "";
+      position: absolute;
+      left: clamp(50px, 7vw, 118px);
+      right: clamp(50px, 7vw, 118px);
+      bottom: 42px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .cover {
+      justify-content: center;
+      background:
+        linear-gradient(112deg, rgba(23, 35, 59, .98) 0 64%, rgba(194, 59, 115, .90) 64% 100%);
+      color: var(--white);
+    }
+    .cover::after { background: rgba(255,255,255,.22); }
+    .cover .eyebrow { color: #f7cadc; }
+    .cover h1 { max-width: 1050px; font-size: clamp(48px, 5.5vw, 84px); line-height: 1.17; }
+    .cover .subtitle { max-width: 920px; color: #e6e9ef; }
+    .cover .meta { color: #cbd2df; }
+
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { letter-spacing: -.035em; }
+    h2 {
+      font-size: clamp(38px, 4.1vw, 64px);
+      line-height: 1.16;
+      margin-bottom: clamp(24px, 3.2vh, 42px);
+      max-width: 1160px;
+    }
+    h3 {
+      font-size: clamp(24px, 2.25vw, 34px);
+      line-height: 1.28;
+      margin-bottom: 14px;
+    }
+    p, li {
+      font-size: clamp(20px, 1.8vw, 29px);
+      line-height: 1.58;
+    }
+    .small { font-size: clamp(15px, 1.05vw, 18px); line-height: 1.45; }
+    .eyebrow {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: clamp(16px, 1.35vw, 22px);
+      font-weight: 750;
+      letter-spacing: .08em;
+    }
+    .subtitle {
+      margin-top: 24px;
+      font-size: clamp(24px, 2.1vw, 34px);
+      line-height: 1.45;
+    }
+    .meta { margin-top: 52px; font-size: clamp(18px, 1.4vw, 23px); }
+    .accent { color: var(--accent); }
+    .blue { color: var(--blue); }
+    .muted { color: var(--muted); }
+    .strong { font-weight: 760; }
+
+    .law-quote {
+      margin-top: 10px;
+      max-width: 1180px;
+      padding-left: 32px;
+      border-left: 7px solid var(--accent);
+      font-size: clamp(27px, 2.6vw, 42px);
+      line-height: 1.55;
+      font-weight: 650;
+    }
+    .law-quote span { color: var(--accent); }
+
+    .plain-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 1180px;
+    }
+    .plain-list li {
+      position: relative;
+      padding: 17px 0 17px 42px;
+      border-top: 1px solid var(--line);
+    }
+    .plain-list li:first-child { border-top: 0; }
+    .plain-list li::before {
+      content: attr(data-n);
+      position: absolute;
+      left: 0;
+      top: 20px;
+      color: var(--accent);
+      font-size: .72em;
+      font-weight: 800;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(36px, 5vw, 82px);
+      align-items: start;
+    }
+    .column { min-width: 0; }
+    .column + .column { border-left: 1px solid var(--line); padding-left: clamp(36px, 5vw, 82px); }
+    .column p { color: var(--muted); }
+    .column ul { margin: 18px 0 0; padding-left: 1.2em; }
+    .column li { margin-bottom: 10px; }
+
+    .question {
+      max-width: 1180px;
+      font-size: clamp(30px, 3.1vw, 50px);
+      line-height: 1.48;
+      font-weight: 760;
+      letter-spacing: -.025em;
+    }
+    .scope {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 58px;
+      max-width: 1180px;
+    }
+    .scope h3 { color: var(--accent); }
+    .scope ul { margin: 10px 0 0; padding-left: 1.2em; }
+    .scope li { font-size: clamp(18px, 1.45vw, 24px); margin-bottom: 6px; }
+
+    .timeline {
+      position: relative;
+      max-width: 1220px;
+      padding-left: 122px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 76px;
+      top: 13px;
+      bottom: 16px;
+      width: 2px;
+      background: var(--line);
+    }
+    .entry { position: relative; margin-bottom: 26px; }
+    .entry::before {
+      content: "";
+      position: absolute;
+      left: -53px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 7px var(--accent-soft);
+    }
+    .year {
+      position: absolute;
+      left: -122px;
+      top: 0;
+      width: 52px;
+      color: var(--accent);
+      font-size: clamp(17px, 1.2vw, 20px);
+      font-weight: 800;
+    }
+    .entry h3 { margin: 0 0 4px; font-size: clamp(21px, 1.75vw, 28px); }
+    .entry p { font-size: clamp(17px, 1.35vw, 22px); color: var(--muted); line-height: 1.45; }
+
+    .versus {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 92px);
+      max-width: 1200px;
+      margin-top: 6px;
+    }
+    .side { padding-top: 22px; border-top: 7px solid var(--line); }
+    .side.preferred { border-top-color: var(--accent); }
+    .side h3 { font-size: clamp(27px, 2.35vw, 38px); }
+    .side p { color: var(--muted); }
+    .side .verdict {
+      margin-top: 28px;
+      color: var(--ink);
+      font-weight: 750;
+      font-size: clamp(21px, 1.65vw, 27px);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+      max-width: 1220px;
+      margin-top: 12px;
+    }
+    .step { padding-top: 22px; border-top: 4px solid var(--accent); }
+    .step .num { color: var(--accent); font-size: 18px; font-weight: 800; margin-bottom: 12px; }
+    .step h3 { font-size: clamp(23px, 1.9vw, 30px); }
+    .step p { font-size: clamp(17px, 1.4vw, 23px); color: var(--muted); }
+    .outline {
+      margin-top: 42px;
+      max-width: 1220px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+    .outline div { font-size: clamp(15px, 1.1vw, 19px); line-height: 1.4; }
+    .outline b { display: block; color: var(--accent); margin-bottom: 5px; }
+
+    .thesis {
+      max-width: 1180px;
+      font-size: clamp(31px, 3vw, 49px);
+      line-height: 1.52;
+      font-weight: 720;
+    }
+    .thesis-note {
+      margin-top: 38px;
+      max-width: 1080px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .refs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 70px;
+      row-gap: 24px;
+      max-width: 1260px;
+    }
+    .ref {
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: clamp(16px, 1.18vw, 20px);
+      line-height: 1.45;
+    }
+    .ref a { color: var(--blue); text-decoration: none; }
+    .ref a:hover { text-decoration: underline; }
+
+    .source {
+      position: absolute;
+      left: clamp(50px, 7vw, 118px);
+      bottom: 52px;
+      z-index: 2;
+      max-width: calc(100vw - 260px);
+      color: #777f8b;
+      font-size: clamp(12px, .82vw, 15px);
+      line-height: 1.3;
+    }
+    .source a { color: inherit; }
+    .slide-no {
+      position: absolute;
+      right: clamp(50px, 7vw, 118px);
+      bottom: 52px;
+      z-index: 3;
+      color: #777f8b;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .controls {
+      position: fixed;
+      right: 18px;
+      bottom: 16px;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      opacity: .28;
+      transition: opacity .2s;
+    }
+    .controls:hover { opacity: 1; }
+    .controls button {
+      width: 38px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 7px;
+      background: rgba(16,22,34,.74);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .progress {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 22;
+      height: 5px;
+      width: 0;
+      background: var(--accent);
+      transition: width .2s ease;
+    }
+    .notes { display: none; }
+    .notes-panel {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 30;
+      display: none;
+      width: min(900px, 86vw);
+      max-height: 32vh;
+      overflow: auto;
+      transform: translateX(-50%);
+      padding: 18px 22px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 10px;
+      background: rgba(18,24,38,.95);
+      color: #f7f7f7;
+      font-size: 17px;
+      line-height: 1.55;
+      box-shadow: 0 12px 36px rgba(0,0,0,.35);
+    }
+    .notes-panel.show { display: block; }
+
+    @media (max-width: 900px) {
+      .columns, .scope, .versus { grid-template-columns: 1fr; gap: 24px; }
+      .column + .column { border-left: 0; border-top: 1px solid var(--line); padding: 24px 0 0; }
+      .steps { grid-template-columns: 1fr; gap: 14px; }
+      .outline { display: none; }
+      .refs { grid-template-columns: 1fr; row-gap: 12px; }
+      .slide { overflow-y: auto; padding-bottom: 90px; }
+    }
+
+    @media print {
+      html, body { overflow: visible; background: white; }
+      .deck { height: auto; }
+      .slide, .slide.active {
+        position: relative;
+        display: flex;
+        width: 13.333in;
+        height: 7.5in;
+        page-break-after: always;
+      }
+      .controls, .progress, .notes-panel { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-live="polite">
+    <section class="slide cover active" data-title="표지">
+      <div class="eyebrow">AI 거버넌스 소논문 연구계획</div>
+      <h1>EU AI Act 제10조의<br>‘충분한 대표성’ 요건은 실효적인가</h1>
+      <p class="subtitle">구체적 측정기준의 부재를 중심으로</p>
+      <p class="meta">연구계획 발표 · 2026</p>
+      <aside class="notes">약 10초. 이번 연구는 EU AI Act가 요구하는 충분한 대표성을 어떤 의미로 이해해야 하는지 다룹니다. 실험이나 지표 설계가 아니라 법해석과 선행연구 분석을 중심으로 진행합니다.</aside>
+      <span class="slide-no">1 / 10</span>
+    </section>
+
+    <section class="slide" data-title="EU AI Act란 무엇인가">
+      <div class="eyebrow">EU AI Act란?</div>
+      <h2>유럽연합이 만든 AI 규제법</h2>
+      <div class="columns" style="max-width:1200px">
+        <div class="column">
+          <h3 class="accent">무엇을 규제하나</h3>
+          <p>EU 안에서 AI를 개발하거나 사용하는 과정에서 사람의 안전과 기본권을 보호하기 위한 법이다.</p>
+        </div>
+        <div class="column">
+          <h3 class="blue">어떻게 규제하나</h3>
+          <p>AI가 미칠 위험이 클수록 더 강한 의무를 부과한다. 채용·교육·신용평가처럼 사람의 기회와 권리에 큰 영향을 주는 AI는 주로 <span class="strong">고위험 AI</span>로 관리한다.</p>
+        </div>
+      </div>
+      <p class="law-quote" style="margin-top:48px;font-size:clamp(23px,2vw,32px)">이 연구는 고위험 AI에 적용되는 <span>데이터 규칙인 제10조</span>를 살펴본다.</p>
+      <p class="source">출처: Regulation (EU) 2024/1689, Articles 1 and 6, Annex III</p>
+      <aside class="notes">약 28초. EU AI Act는 유럽연합이 만든 AI 규제법입니다. 모든 AI를 똑같이 규제하지 않고 위험이 클수록 더 강한 의무를 부과합니다. 특히 채용, 교육, 신용평가처럼 개인의 기회와 권리에 큰 영향을 주는 AI를 고위험 AI로 관리합니다. 제 연구는 고위험 AI의 데이터 품질을 다루는 제10조에 초점을 맞춥니다.</aside>
+      <span class="slide-no">2 / 10</span>
+    </section>
+
+    <section class="slide" data-title="제10조 제3항 원문">
+      <div class="eyebrow">EU AI Act Article 10(3)</div>
+      <h2>법은 ‘sufficiently representative’라고 규정한다</h2>
+      <p class="law-quote" lang="en" style="font-size:clamp(22px,1.85vw,30px);line-height:1.47">“Training, validation and testing data sets shall be relevant, <span>sufficiently representative</span>, and to the best extent possible, free of errors and complete in view of the intended purpose.<br><br>They shall have the appropriate statistical properties, including, where applicable, as regards the persons or groups of persons in relation to whom the high-risk AI system is intended to be used.”</p>
+      <p style="margin-top:28px;font-size:clamp(20px,1.6vw,26px);color:var(--muted)"><span class="strong">뜻:</span> 데이터는 사용 목적과 관련이 있고 충분히 대표적이어야 하며, AI가 적용될 사람이나 집단에 관해 적절한 통계적 특성을 가져야 한다.</p>
+      <p class="source">출처: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Regulation (EU) 2024/1689, Article 10(3)</a></p>
+      <aside class="notes">약 15초. 제10조 제3항의 실제 문장입니다. 핵심은 충분히 대표적이라는 표현과, AI가 적용될 사람이나 집단에 적절한 통계적 특성을 가져야 한다는 요구입니다.</aside>
+      <span class="slide-no">3 / 11</span>
+    </section>
+
+    <section class="slide" data-title="제10조의 데이터 요구">
+      <div class="eyebrow">EU AI Act 제10조</div>
+      <h2>고위험 AI에 쓸 데이터의 품질을 관리하라고 요구한다</h2>
+      <ol class="plain-list">
+        <li data-n="01">학습·검증·테스트 데이터가 AI의 <span class="strong">사용 목적과 관련</span>되어야 한다.</li>
+        <li data-n="02">데이터가 실제로 AI를 적용할 사람과 환경을 <span class="strong">충분히 대표</span>해야 한다.</li>
+        <li data-n="03">가능한 최선의 범위에서 <span class="strong">오류가 없고 완전</span>해야 하며, 데이터의 한계와 편향도 검토해야 한다.</li>
+      </ol>
+      <p style="margin-top:30px;font-size:clamp(21px,1.8vw,29px);color:var(--muted)">쉽게 말하면, AI가 판단할 현실을 데이터가 제대로 보여 주는지 확인하라는 뜻이다.</p>
+      <p class="source">출처: Regulation (EU) 2024/1689, Article 10(2)–(4)</p>
+      <aside class="notes">약 17초. 쉽게 말하면 제10조는 고위험 AI의 데이터가 사용 목적과 관련되고, 실제 적용 대상과 환경을 충분히 반영하며, 가능한 범위에서 오류가 없도록 관리하라는 규정입니다.</aside>
+      <span class="slide-no">3 / 10</span>
+    </section>
+
+    <section class="slide omitted" data-title="개인정보보호와의 긴장">
+      <div class="eyebrow">개인정보보호와의 긴장</div>
+      <h2>편향을 보려면 집단정보가 필요하다</h2>
+      <div class="columns">
+        <div class="column">
+          <h3 class="accent">대표성 검증의 요구</h3>
+          <p>집단별 누락과 오류를 확인하려면 성별, 연령, 인종·민족, 장애 등 보호속성에 관한 정보가 필요할 수 있다.</p>
+        </div>
+        <div class="column">
+          <h3 class="blue">개인정보보호의 요구</h3>
+          <p>개인정보 최소처리 원칙은 목적에 필요한 범위만 처리하도록 요구한다. 특별범주 개인정보에는 더 엄격한 제한이 적용된다.</p>
+        </div>
+      </div>
+      <p class="law-quote" style="margin-top:46px;font-size:clamp(23px,2vw,32px)">집단정보를 처리하지 않으면 편향을 확인하기 어렵고, 처리하면 개인정보 침해 위험이 커진다.</p>
+      <p class="source">관련 규정: EU AI Act Article 10(5), GDPR Articles 5 and 9</p>
+      <aside class="notes">제10조 제5항은 편향 검출과 교정을 위해 특별범주 개인정보를 예외적으로 처리할 수 있도록 합니다. 그러나 엄격한 필요성과 보호조치를 요구합니다.</aside>
+      <span class="slide-no">4 / 10</span>
+    </section>
+
+    <section class="slide" data-title="대표성 기준의 공백">
+      <div class="eyebrow">문제는 ‘충분히’라는 표현</div>
+      <h2>법은 대표성을 요구하지만 판단기준은 정하지 않았다</h2>
+      <ol class="plain-list">
+        <li data-n="01"><span class="strong">누구를 기준</span>으로 대표성을 판단할 것인가? 실제 이용자와 잠재적 대상자는 다를 수 있다.</li>
+        <li data-n="02"><span class="strong">어떤 집단</span>을 확인할 것인가? 성별·연령·인종·장애 중 필요한 속성이 상황마다 다르다.</li>
+        <li data-n="03"><span class="strong">어떤 수치</span>를 사용할 것인가? 표본비율과 집단별 오류율은 서로 다른 문제를 보여 준다.</li>
+      </ol>
+      <p class="law-quote" style="margin-top:34px;font-size:clamp(22px,1.85vw,29px)">그래서 사업자는 무엇을 해야 법을 지킨 것인지, 감독기관은 무엇을 기준으로 판단할 것인지 불명확하다.</p>
+      <aside class="notes">약 25초. 문제는 법이 충분히 대표적이어야 한다고만 할 뿐 판단기준을 제시하지 않는다는 점입니다. 누구를 기준으로 삼을지, 어떤 집단을 확인할지, 어떤 수치를 사용할지가 열려 있습니다. 그래서 사업자와 감독기관이 서로 다른 판단을 할 수 있습니다.</aside>
+      <span class="slide-no">5 / 10</span>
+    </section>
+
+    <section class="slide" data-title="선행연구">
+      <div class="eyebrow">기존 연구는 무엇을 밝혔나</div>
+      <h2>최근 연구도 구체적인 기준이 부족하다고 지적한다</h2>
+      <div class="timeline">
+        <div class="entry">
+          <span class="year">2021</span>
+          <h3>Wachter, Mittelstadt &amp; Russell</h3>
+          <p>공정성을 하나의 통계수치로 판단하기 어렵고, 어떤 지표를 선택할지 법적 판단이 필요하다고 보았다.</p>
+        </div>
+        <div class="entry">
+          <span class="year">2025</span>
+          <h3>Van Bekkum</h3>
+          <p>제10조가 어떤 편향을 어떻게 검토해야 하는지 명확하지 않으며 지침과 표준이 필요하다고 지적했다.</p>
+        </div>
+        <div class="entry">
+          <span class="year">2025</span>
+          <h3>Gallese &amp; Falletti</h3>
+          <p>데이터 수치와 함께 법적 맥락 및 전문가 판단을 검토해야 한다고 주장했다.</p>
+        </div>
+        <div class="entry">
+          <span class="year">2026</span>
+          <h3>Niemiec et al.</h3>
+          <p>대표성을 평가할 인구집단과 통계적 특성을 더 구체화해야 한다고 제안했다.</p>
+        </div>
+      </div>
+      <aside class="notes">약 30초. 기존 연구도 같은 문제를 지적합니다. 공정성을 하나의 수치로 판단하기 어렵고, 제10조가 어떤 집단과 편향을 검토해야 하는지 명확하지 않다는 것입니다. 다만 기준이 불명확하다는 지적에서 더 나아가, 이 규정을 어떤 성격의 의무로 해석할지는 추가로 연구할 수 있습니다.</aside>
+      <span class="slide-no">6 / 10</span>
+    </section>
+
+    <section class="slide omitted" data-title="분석의 핵심">
+      <div class="eyebrow">분석의 핵심</div>
+      <h2>제10조가 요구하는 의무의 성격</h2>
+      <div class="versus">
+        <div class="side">
+          <h3>결과의무</h3>
+          <p>특정 인구비율이나 공정성 점수를 달성해야 한다는 해석이다. 명확하지만 분야별 맥락과 상충하는 지표를 반영하기 어렵다.</p>
+          <p class="verdict">법문에는 공통 임계값이 없다.</p>
+        </div>
+        <div class="side preferred">
+          <h3>절차적 입증의무</h3>
+          <p>사업자가 대상집단, 판단기준, 개인정보 처리 필요성, 분석의 한계를 설명하고 기록해야 한다는 해석이다.</p>
+          <p class="verdict accent">본 연구가 검토할 해석</p>
+        </div>
+      </div>
+      <aside class="notes">이 연구의 핵심 비교입니다. 결과의무로 보면 명확한 수치가 필요하지만 법은 이를 제공하지 않습니다. 절차적 의무로 보면 맥락에 맞는 판단과 설명책임을 요구할 수 있습니다.</aside>
+      <span class="slide-no">7 / 10</span>
+    </section>
+
+    <section class="slide" data-title="연구질문">
+      <div class="eyebrow">연구질문</div>
+      <h2>측정기준이 없어도 법적 의무가 될 수 있는가</h2>
+      <p class="question">대표성을 판단할 속성·수치·지표가 정해져 있지 않은 상황에서도 EU AI Act 제10조의 ‘충분한 대표성’ 요건은 <span class="accent">실효적인 법적 의무</span>로 기능할 수 있는가?</p>
+      <p class="thesis-note">여기서 실효성이란 사업자가 의무를 지킬 수 있고, 감독기관이 그 준수 여부를 판단할 수 있다는 의미다.</p>
+      <aside class="notes">약 10초. 핵심 질문은 측정기준이 없어도 충분한 대표성 요건이 실제로 지키고 집행할 수 있는 법적 의무가 될 수 있는가입니다.</aside>
+      <span class="slide-no">6 / 10</span>
+    </section>
+
+    <section class="slide" data-title="세부 연구질문">
+      <div class="eyebrow">세부 연구질문</div>
+      <h2>네 가지 질문으로 나누어 검토한다</h2>
+      <ol class="plain-list">
+        <li data-n="01">제10조에서 말하는 <span class="strong">‘충분한 대표성’</span>은 어떤 의미인가?</li>
+        <li data-n="02">측정기준의 부재는 법의 결함인가, AI의 목적과 맥락을 반영하기 위한 <span class="strong">개방성</span>인가?</li>
+        <li data-n="03"><span class="strong">통계적 대표성</span>과 EU 비차별법상 공정성은 어떤 관계에 있는가?</li>
+        <li data-n="04">대표성 요건을 수치 달성보다 판단과정의 설명을 요구하는 <span class="strong">절차적 입증의무</span>로 볼 수 있는가?</li>
+      </ol>
+      <aside class="notes">약 10초. 대표성의 의미, 기준이 비어 있는 이유, 통계와 법적 공정성의 관계, 그리고 의무의 성격을 차례로 검토합니다.</aside>
+      <span class="slide-no">7 / 10</span>
+    </section>
+
+    <section class="slide" data-title="연구범위">
+      <div class="eyebrow">연구범위</div>
+      <h2>제10조의 대표성 요건에 범위를 한정한다</h2>
+      <div class="scope" style="margin-top:12px">
+        <div>
+          <h3>분석하는 내용</h3>
+          <ul>
+            <li>제10조 제2항부터 제4항</li>
+            <li>최근 법·정책 선행연구</li>
+            <li>개인정보 문제는 보조 쟁점으로 검토</li>
+          </ul>
+        </div>
+        <div>
+          <h3>제외하는 내용</h3>
+          <ul>
+            <li>실험과 통계 계산</li>
+            <li>기술적 감사모형 설계</li>
+            <li>산업별 사례와 한국법 비교</li>
+            <li>범용 AI의 학습데이터 문제</li>
+          </ul>
+        </div>
+      </div>
+      <p class="source">8~10쪽 소논문에 맞춘 법·정책 문헌연구</p>
+      <aside class="notes">약 10초. 제10조 제2항부터 제4항과 최근 문헌만 분석합니다. 실험, 기술설계, 산업별 사례와 한국법 비교는 제외합니다.</aside>
+      <span class="slide-no">8 / 10</span>
+    </section>
+
+    <section class="slide" data-title="기대되는 연구의 의의">
+      <div class="eyebrow">기대되는 연구의 의의</div>
+      <h2>대표성 의무를 실제로 적용할 해석기준을 제안한다</h2>
+      <ol class="plain-list">
+        <li data-n="01">통계적 대표성과 <span class="strong">법적 대표성의 차이</span>를 정리한다.</li>
+        <li data-n="02">기준의 불명확성이 갖는 <span class="strong">필요성과 문제점</span>을 함께 분석한다.</li>
+        <li data-n="03">대표성 요건을 <span class="strong">절차적 입증의무</span>로 해석할 가능성을 제시한다.</li>
+        <li data-n="04">지침과 조화표준이 요구할 <span class="strong">최소 문서화 항목</span>의 방향을 제안한다.</li>
+      </ol>
+      <aside class="notes">약 10초. 이 연구는 새 지표를 만드는 대신 대표성 의무의 법적 성격을 밝히고, 지침과 표준이 구체화할 방향을 제안합니다.</aside>
+      <span class="slide-no">9 / 10</span>
+    </section>
+
+    <section class="slide" data-title="예상 주장">
+      <div class="eyebrow">예상 주장</div>
+      <h2>고정된 수치의 부재가 곧 실효성의 부재를 의미하지는 않는다</h2>
+      <p class="thesis">AI의 목적과 대상집단에 따라 대표성 기준이 달라질 수 있다. 제10조는 동일한 수치의 달성보다 <span class="accent">대표성 판단의 대상·방법·근거와 한계를 설명하도록 요구하는 절차적 입증의무</span>로 해석하는 것이 타당하다.</p>
+      <p class="thesis-note">다만 사업자와 감독기관의 판단 차이를 줄이려면 지침과 조화표준이 최소한의 문서화 항목을 구체화해야 한다.</p>
+      <p class="source">주요 문헌: Van Bekkum (2025); Gallese &amp; Falletti (2025); Niemiec et al. (2026); Wachter et al. (2021)</p>
+      <aside class="notes">약 15초. 예상 결론은 고정된 수치가 없더라도 사업자가 판단기준과 한계를 설명하고 문서화하도록 요구하면 제10조가 실효적인 의무로 기능할 수 있다는 것입니다.</aside>
+      <span class="slide-no">10 / 10</span>
+    </section>
+
+    <section class="slide omitted" data-title="주요 문헌">
+      <div class="eyebrow">주요 문헌</div>
+      <h2>연구의 주요 근거</h2>
+      <div class="refs">
+        <div class="ref"><strong>EU</strong><br><a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">Regulation (EU) 2024/1689, Article 10</a></div>
+        <div class="ref"><strong>Van Bekkum, 2025</strong><br><a href="https://doi.org/10.1016/j.clsr.2025.106115">Using Sensitive Data to De-bias AI Systems</a></div>
+        <div class="ref"><strong>Niemiec et al., 2026</strong><br><a href="https://doi.org/10.1093/jlb/lsag001">Will the EU AI Act Help to Mitigate Dataset Bias in Medical AI?</a></div>
+        <div class="ref"><strong>Gallese &amp; Falletti, 2025</strong><br><a href="https://doi.org/10.13135/2785-7867/12840">Dataset Assessment Tools for AI Act Compliance</a></div>
+        <div class="ref"><strong>Wachter, Mittelstadt &amp; Russell, 2021</strong><br><a href="https://doi.org/10.1016/j.clsr.2021.105567">Why Fairness Cannot Be Automated</a></div>
+        <div class="ref"><strong>JRC, 2022</strong><br><a href="https://doi.org/10.2760/365479">Data Quality Requirements for Inclusive, Non-biased and Trustworthy AI</a></div>
+      </div>
+      <p class="source">키보드 ← → 또는 Space로 이동 · N으로 발표자 노트 표시 · 인쇄 시 PDF 저장 가능</p>
+      <aside class="notes">핵심 문헌은 여섯 개로 제한했습니다. 제10조 원문, 최근 법학 연구, 데이터 품질 연구, 공정성 지표의 법적 한계를 다룬 연구로 구성합니다.</aside>
+      <span class="slide-no">10 / 10</span>
+    </section>
+  </main>
+
+  <div class="controls" aria-label="슬라이드 이동">
+    <button id="prev" type="button" aria-label="이전 슬라이드">‹</button>
+    <button id="next" type="button" aria-label="다음 슬라이드">›</button>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="notes-panel" id="notesPanel"></div>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide:not(.omitted)')];
+      const progress = document.getElementById('progress');
+      const notesPanel = document.getElementById('notesPanel');
+      let index = 0;
+
+      function show(nextIndex, updateHash = true) {
+        index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+        progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+        document.title = `${slides[index].dataset.title} · EU AI Act 연구계획`;
+        const note = slides[index].querySelector('.notes');
+        notesPanel.textContent = note ? note.textContent.trim() : '';
+        if (updateHash) history.replaceState(null, '', `#${index + 1}`);
+      }
+
+      function move(delta) { show(index + delta); }
+      document.getElementById('prev').addEventListener('click', () => move(-1));
+      document.getElementById('next').addEventListener('click', () => move(1));
+
+      addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(event.key)) {
+          event.preventDefault(); move(1);
+        } else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) {
+          event.preventDefault(); move(-1);
+        } else if (event.key === 'Home') {
+          show(0);
+        } else if (event.key === 'End') {
+          show(slides.length - 1);
+        } else if (event.key.toLowerCase() === 'n') {
+          notesPanel.classList.toggle('show');
+        } else if (event.key.toLowerCase() === 'f') {
+          document.documentElement.requestFullscreen?.();
+        }
+      });
+
+      let touchX = null;
+      addEventListener('touchstart', (event) => { touchX = event.changedTouches[0].screenX; }, { passive: true });
+      addEventListener('touchend', (event) => {
+        if (touchX === null) return;
+        const delta = event.changedTouches[0].screenX - touchX;
+        if (Math.abs(delta) > 50) move(delta < 0 ? 1 : -1);
+        touchX = null;
+      }, { passive: true });
+
+      const requested = Number(location.hash.slice(1));
+      slides.forEach((slide, i) => {
+        const number = slide.querySelector('.slide-no');
+        if (number) number.textContent = `${i + 1} / ${slides.length}`;
+      });
+      show(Number.isFinite(requested) && requested > 0 ? requested - 1 : 0, false);
+    })();
+  </script>
+</body>
+</html>
