@@ -8,6 +8,11 @@
 
 발표자료 ppt 양식은 1~2 page 이내에서 자유롭게 작성하고, 소논문 hwp는 제게 학술지에서 지정한 포맷으로 제출
 
+
+<img width ='900' height = '400' src = 'https://github.com/YangGuiBee/AIG2/blob/main/07%20-%20Case%20Study%20(1)%20-%20AI%20%EB%B2%95%EA%B7%9C%EC%A0%9C/images/Research.jpg'>
+
+
+
 ---
 **학술지검색리스트.xls :** 파일(한국학술지인용색인 홈페이지  https://www.kci.go.kr  학술지검색(우수등재,등재)으로 추출) 참조<br>
 Astra 추천 : 정보화정책, 한국컴퓨터정보학회논문지<br>
