@@ -10,6 +10,14 @@
 <small>https://yangguibee.github.io/AIG2/10%20-%20AI%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%20%EA%B8%B0%EC%88%A0/(AIG20262_10)_20261105_detail.html</small>
 
 
+## ★ 강의 교안(2026.11.14 보완본 — 그래프 엔지니어링·화면 조작 에이전트·사고 대응 추가)
+<small>https://yangguibee.github.io/AIG2/10%20-%20AI%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%20%EA%B8%B0%EC%88%A0/(AIG20262_10)_20261105_update.html</small>
+
+
+## ★ 강의 교안(상세 자료, 2026.11.14 보완본)
+<small>https://yangguibee.github.io/AIG2/10%20-%20AI%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%20%EA%B8%B0%EC%88%A0/(AIG20262_10)_20261105_detail_update.html</small>
+
+
 
 ## ★ 실습 자료(준수 체크리스트 엑셀)
 <small>https://yangguibee.github.io/AIG2/10%20-%20AI%20%EA%B1%B0%EB%B2%84%EB%84%8C%EC%8A%A4%20%EA%B8%B0%EC%88%A0/(AIG20262_10)_%EC%A4%80%EC%88%98%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8.xlsx</small>
