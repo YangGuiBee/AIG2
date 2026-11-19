@@ -14,7 +14,3 @@
 
 ## ★ 연구이론 맵
 <small>https://yangguibee.github.io/research.html</small>
-
-- 시연 예시 1 · TOE 확장(TOPA) — 클라우드 ERP 관리체계 : <small>https://yangguibee.github.io/research.html#ex1</small>
-- 시연 예시 2 · 공공 AI 챗봇 시민 이용의도 : <small>https://yangguibee.github.io/research.html#ex2</small>
-- 시연 예시 3 · 국가별 AI 규제 비교 : <small>https://yangguibee.github.io/research.html#ex3</small>
